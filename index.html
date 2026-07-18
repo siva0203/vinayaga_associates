@@ -1,1768 +1,942 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinayaga Associates | Premium Financial Architecture & Tax Consulting</title>
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Space Grotesk (headers) and Plus Jakarta Sans (ultra-legible body) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome Premium Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Three.js (High Performance 3D WebGL Engine) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
-    <!-- GSAP (Premium UI Animations) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinayaga Associates | Tax & Compliance Advisory</title>
 
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        display: ['"Space Grotesk"', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            white: '#FFFFFF',
-                            gray: '#F8FAFC',
-                            navy: '#090D16',
-                            cardDark: '#0F1524',
-                            royalBlue: '#2563EB',
-                            emerald: '#10B981',
-                            gold: '#D97706',
-                            darkText: '#0F172A',
-                            accentBlue: '#3B82F6',
-                            emeraldDark: '#34D399',
-                            goldDark: '#FBBF24'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <style>
-        /* Modern Glassmorphic Scrollbar Integration */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--scroll-track, #F8FAFC);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(37, 99, 235, 0.25);
-            border-radius: 99px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(37, 99, 235, 0.6);
-        }
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: {
+        serif: ['"Fraunces"', 'serif'],
+        sans: ['"Inter"', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'monospace'],
+      },
+      colors: {
+        ink: { 900: '#0E1620', 800: '#141F2C', 700: '#1D2A39', 500: '#3A4A5C' },
+        paper: { DEFAULT: '#F7F3E9', 2: '#EFE8D6', 3: '#E4DBC4' },
+        brass: { DEFAULT: '#A87C3F', light: '#C9A46A', dark: '#7C5A2C' },
+        moss: { DEFAULT: '#1F4D3D', light: '#2E6B54' },
+      },
+    },
+  },
+}
+</script>
 
-        /* Root CSS Custom Variables for Fluid Interactions */
-        :root {
-            --scroll-track: #F8FAFC;
-            --aurora-1: rgba(37, 99, 235, 0.04);
-            --aurora-2: rgba(16, 185, 129, 0.03);
-            --aurora-3: rgba(217, 119, 6, 0.02);
-            --glass-bg: rgba(255, 255, 255, 0.75);
-            --glass-border: rgba(37, 99, 235, 0.08);
-            --glass-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.03);
-        }
+<style>
+  * { -webkit-tap-highlight-color: transparent; }
+  html { scroll-padding-top: 90px; }
+  body {
+    background-color: #F7F3E9;
+    background-image:
+      linear-gradient(rgba(14,22,32,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(14,22,32,0.035) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+  .dark body {
+    background-color: #0E1620;
+    background-image:
+      linear-gradient(rgba(247,243,233,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(247,243,233,0.035) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(168,124,63,0.35); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(168,124,63,0.6); }
 
-        .dark:root {
-            --scroll-track: #090D16;
-            --aurora-1: rgba(59, 130, 246, 0.08);
-            --aurora-2: rgba(52, 211, 153, 0.05);
-            --aurora-3: rgba(251, 191, 36, 0.03);
-            --glass-bg: rgba(15, 21, 36, 0.75);
-            --glass-border: rgba(255, 255, 255, 0.05);
-            --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
+  .rule { border-color: rgba(14,22,32,0.12); }
+  .dark .rule { border-color: rgba(247,243,233,0.1); }
 
-        /* Custom Ambient Glow Follower */
-        #cursor-glow {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
-            pointer-events: none;
-            z-index: 1;
-            transform: translate(-50%, -50%);
-            transition: width 0.3s, height 0.3s;
-        }
-        .dark #cursor-glow {
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(9, 13, 22, 0) 70%);
-        }
+  .card-paper {
+    background: #FFFDF8;
+    border: 1px solid rgba(14,22,32,0.1);
+    box-shadow: 0 1px 2px rgba(14,22,32,0.04), 0 12px 28px -18px rgba(14,22,32,0.18);
+    transition: transform 0.35s cubic-bezier(.16,1,.3,1), box-shadow 0.35s cubic-bezier(.16,1,.3,1), border-color 0.35s;
+  }
+  .dark .card-paper {
+    background: #141F2C;
+    border-color: rgba(247,243,233,0.08);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3), 0 20px 40px -20px rgba(0,0,0,0.5);
+  }
+  .card-paper:hover { transform: translateY(-3px); border-color: rgba(168,124,63,0.4); }
 
-        /* Fluid glassmorphism styling card */
-        .premium-glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            box-shadow: var(--glass-shadow);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+  .theme-transition { transition: background-color .5s ease, border-color .5s ease, color .5s ease; }
 
-        .premium-glass-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(37, 99, 235, 0.2);
-            box-shadow: 0 30px 60px -15px rgba(37, 99, 235, 0.1);
-        }
-        .dark .premium-glass-card:hover {
-            border-color: rgba(59, 130, 246, 0.3);
-            box-shadow: 0 30px 60px -15px rgba(59, 130, 246, 0.2);
-        }
+  /* Seal / signature emblem */
+  .seal-ring { animation: sealSpin 40s linear infinite; }
+  @keyframes sealSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
-        /* Dynamic Aurora gradients */
-        .aurora-layer-1 { background: radial-gradient(circle, var(--aurora-1) 0%, rgba(255, 255, 255, 0) 60%); }
-        .aurora-layer-2 { background: radial-gradient(circle, var(--aurora-2) 0%, rgba(255, 255, 255, 0) 65%); }
-        .aurora-layer-3 { background: radial-gradient(circle, var(--aurora-3) 0%, rgba(255, 255, 255, 0) 60%); }
+  .stamp-tag {
+    transition: transform .4s cubic-bezier(.16,1,.3,1);
+  }
+  .stamp-tag:hover { transform: rotate(-1.5deg) translateY(-2px); }
 
-        /* Sophisticated Dual Metallic Glow Border Animations (No Rainbows) */
-        .glow-border-btn {
-            position: relative;
-            background: linear-gradient(90deg, #2563EB, #1D4ED8, #3B82F6, #2563EB);
-            background-size: 300% 100%;
-            animation: borderGlowFlow 6s linear infinite;
-        }
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-        @keyframes borderGlowFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px;
+    background: currentColor; transition: width .3s cubic-bezier(.16,1,.3,1);
+  }
+  .nav-link:hover::after { width: 100%; }
 
-        /* Pulsing AI Assistant Orb Breathing Animation */
-        @keyframes orbBreathe {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(37, 99, 235, 0.3); }
-            50% { transform: scale(1.06); box-shadow: 0 0 30px rgba(37, 99, 235, 0.5); }
-        }
-        .ai-orb-pulse {
-            animation: orbBreathe 4s ease-in-out infinite;
-        }
+  input, select, textarea { font-family: 'Inter', sans-serif; }
+  .num { font-family: 'IBM Plex Mono', monospace; }
 
-        /* Navigation link premium border line */
-        .nav-link {
-            position: relative;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #2563EB, #10B981);
-            transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Custom transitions */
-        .theme-transition {
-            transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-                        border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
-                        color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-    </style>
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .seal-ring { animation: none; }
+  }
+</style>
 </head>
-<body class="bg-brand-gray dark:bg-brand-navy text-brand-darkText dark:text-slate-100 font-sans antialiased overflow-x-hidden selection:bg-brand-royalBlue selection:text-white theme-transition">
+<body class="text-ink-900 dark:text-paper font-sans antialiased theme-transition">
 
-    <!-- Screen Loading Mask -->
-    <div id="loader-screen" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white dark:bg-brand-navy transition-all duration-700">
-        <div class="relative flex flex-col items-center">
-            <!-- Animated Shield Logo -->
-            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-brand-royalBlue to-brand-emerald p-[2px] animate-spin mb-6">
-                <div class="w-full h-full bg-white dark:bg-brand-navy rounded-[14px]"></div>
-            </div>
-            <h2 class="font-display font-bold text-xl tracking-wider text-brand-darkText dark:text-white animate-pulse">VINAYAGA ASSOCIATES</h2>
-            <p class="text-xs text-slate-400 tracking-[0.25em] uppercase mt-2">Initializing Financial Engine...</p>
-        </div>
+<!-- NAV -->
+<nav class="fixed top-0 left-0 z-50 w-full border-b rule bg-paper/90 dark:bg-ink-900/90 backdrop-blur-sm px-4 lg:px-10 py-4 theme-transition">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full border-2 border-brass flex items-center justify-center">
+        <span class="font-serif italic font-semibold text-brass text-sm">VA</span>
+      </div>
+      <div class="flex flex-col leading-none">
+        <span class="font-serif font-semibold text-base tracking-wide">Vinayaga Associates</span>
+        <span class="text-[9px] text-brass tracking-[0.2em] uppercase mt-0.5">Tax & Compliance Advisory</span>
+      </div>
+    </a>
+
+    <div class="hidden lg:flex items-center gap-9 text-[11px] font-semibold tracking-[0.12em] uppercase text-ink-900/70 dark:text-paper/70">
+      <a href="#services" class="nav-link hover:text-brass transition-colors">Services</a>
+      <a href="#about" class="nav-link hover:text-brass transition-colors">About Us</a>
+      <a href="#calculators" class="nav-link hover:text-brass transition-colors">Calculators</a>
+      <a href="#faq" class="nav-link hover:text-brass transition-colors">FAQ</a>
+      <a href="#booking" class="nav-link hover:text-brass transition-colors">Contact</a>
     </div>
 
-    <!-- Interactive Mouse-Glow Follower Layer -->
-    <div id="cursor-glow" class="fixed top-0 left-0 rounded-full mix-blend-screen pointer-events-none"></div>
-
-    <!-- Atmospheric Liquid Aurora Background Container -->
-    <div class="fixed inset-0 -z-20 overflow-hidden pointer-events-none">
-        <div class="aurora-layer-1 absolute top-[-10%] left-[-10%] w-[90vw] h-[90vw] rounded-full"></div>
-        <div class="aurora-layer-2 absolute bottom-[-10%] right-[-10%] w-[80vw] h-[80vw] rounded-full"></div>
-        <div class="aurora-layer-3 absolute top-[30%] left-[40%] w-[60vw] h-[60vw] rounded-full"></div>
+    <div class="flex items-center gap-3">
+      <button id="theme-switch-btn" class="w-9 h-9 rounded-full border rule flex items-center justify-center hover:border-brass transition-colors">
+        <i id="theme-icon" class="fa-solid fa-moon text-xs"></i>
+      </button>
+      <a href="#booking" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-ink-900 dark:bg-brass text-paper dark:text-ink-900 text-[11px] font-bold tracking-[0.1em] uppercase hover:bg-brass dark:hover:bg-brass-light transition-colors">
+        Book a Consultation
+      </a>
+      <button id="mobile-toggle-btn" class="lg:hidden w-9 h-9 rounded-full border rule flex items-center justify-center">
+        <i id="mobile-toggle-icon" class="fa-solid fa-bars text-sm"></i>
+      </button>
     </div>
-
-    <!-- Three.js Responsive 3D Canvas Context -->
-    <div id="canvas-3d-space" class="fixed inset-0 -z-10 w-full h-full opacity-70 dark:opacity-40"></div>
-
-    <!-- WORLD-CLASS GLASS NAVIGATION BAR -->
-    <nav class="fixed top-0 left-0 z-50 w-full border-b border-black/[0.04] dark:border-white/5 bg-white/70 dark:bg-brand-navy/60 backdrop-blur-xl px-4 lg:px-12 py-4 transition-all duration-300">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            
-            <!-- Company Premium Logo Structure -->
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="relative flex items-center justify-center w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-royalBlue to-brand-emerald p-[1px] shadow-lg shadow-blue-500/10">
-                    <div class="w-full h-full bg-white dark:bg-brand-navy rounded-[15px] flex items-center justify-center transition-all duration-300">
-                        <span class="font-display font-extrabold text-transparent bg-clip-text bg-gradient-to-tr from-brand-royalBlue to-brand-emerald text-lg">VA</span>
-                    </div>
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-display font-extrabold text-lg tracking-wider text-brand-darkText dark:text-white leading-tight">VINAYAGA</span>
-                    <span class="text-[10px] text-brand-royalBlue dark:text-brand-accentBlue tracking-[0.25em] font-extrabold leading-none">ASSOCIATES</span>
-                </div>
-            </a>
-
-            <!-- High-End Desktop Links -->
-            <div class="hidden lg:flex items-center gap-10 text-xs tracking-widest font-bold text-brand-darkText/70 dark:text-slate-300/80">
-                <a href="#services" class="nav-link hover:text-brand-royalBlue dark:hover:text-white transition-colors duration-300">SYSTEM SERVICES</a>
-                <a href="#about" class="nav-link hover:text-brand-royalBlue dark:hover:text-white transition-colors duration-300">VIGNESH & TRUST</a>
-                <a href="#calculators" class="nav-link hover:text-brand-royalBlue dark:hover:text-white transition-colors duration-300">CALCULATORS</a>
-                <a href="#faq" class="nav-link hover:text-brand-royalBlue dark:hover:text-white transition-colors duration-300">FAQS</a>
-                <a href="#admin" class="nav-link hover:text-brand-royalBlue dark:hover:text-white transition-colors duration-300">ADMIN HUB</a>
-            </div>
-
-            <!-- Interaction Operations Command Center -->
-            <div class="flex items-center gap-4">
-                
-                <!-- Animated Smooth Dark/Light Theme Controller -->
-                <button id="theme-switch-btn" class="w-10 h-10 rounded-full bg-black/[0.04] dark:bg-white/5 border border-black/5 dark:border-white/10 flex items-center justify-center text-brand-darkText dark:text-white hover:scale-105 transition-all" title="Toggle Visual Theme">
-                    <i id="theme-icon" class="fa-solid fa-moon"></i>
-                </button>
-
-                <!-- Anchor Secure Session Trigger -->
-                <a href="#booking" class="glow-border-btn relative hidden sm:inline-flex items-center justify-center p-[1px] text-xs font-semibold tracking-wider text-white rounded-full group shadow-md shadow-brand-royalBlue/10">
-                    <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-brand-darkText dark:bg-brand-navy rounded-full group-hover:bg-opacity-0">
-                        BOOK SECURED DESK <i class="fa-solid fa-arrow-right ml-2 text-[10px]"></i>
-                    </span>
-                </a>
-                
-                <!-- Dynamic Mobile Menu Trigger -->
-                <button id="mobile-toggle-btn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-black/[0.04] dark:bg-white/5 border border-black/5 dark:border-white/10">
-                    <i id="mobile-toggle-icon" class="fa-solid fa-bars text-lg text-brand-royalBlue dark:text-white"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Sliding Mobile Navigation Block -->
-        <div id="mobile-drawer" class="hidden lg:hidden mt-4 rounded-3xl border border-black/[0.04] dark:border-white/10 bg-white/95 dark:bg-brand-navy/95 backdrop-blur-2xl p-6 absolute left-4 right-4 shadow-2xl transition-all duration-300 ease-out">
-            <div class="flex flex-col gap-5 text-sm tracking-wide font-semibold text-brand-darkText dark:text-slate-200">
-                <a href="#services" class="mobile-link hover:text-brand-royalBlue flex items-center justify-between">SYSTEM SERVICES <i class="fa-solid fa-angle-right text-xs"></i></a>
-                <a href="#about" class="mobile-link hover:text-brand-royalBlue flex items-center justify-between">VIGNESH & TRUST <i class="fa-solid fa-angle-right text-xs"></i></a>
-                <a href="#calculators" class="mobile-link hover:text-brand-royalBlue flex items-center justify-between">CALCULATORS <i class="fa-solid fa-angle-right text-xs"></i></a>
-                <a href="#faq" class="mobile-link hover:text-brand-royalBlue flex items-center justify-between">FAQS <i class="fa-solid fa-angle-right text-xs"></i></a>
-                <a href="#admin" class="mobile-link hover:text-brand-royalBlue flex items-center justify-between">ADMIN DECK <i class="fa-solid fa-angle-right text-xs"></i></a>
-                <hr class="border-black/[0.04] dark:border-white/5 my-2">
-                <a href="#booking" class="mobile-link w-full text-center py-4 rounded-2xl bg-gradient-to-r from-brand-royalBlue via-brand-emerald to-brand-royalBlue text-white font-bold text-xs tracking-widest shadow-lg">
-                    BOOK ADVISORY NOW
-                </a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- IMMERSIVE 3D HERO SECTION -->
-    <section class="relative min-h-screen pt-32 lg:pt-0 flex items-center justify-center px-4 lg:px-8 z-10">
-        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <!-- Copywriting Content Hub -->
-            <div class="lg:col-span-7 space-y-8 text-center lg:text-left animate-fade-in-left">
-                <div class="inline-flex items-center gap-2 rounded-full border border-brand-royalBlue/20 bg-brand-royalBlue/5 dark:bg-brand-royalBlue/10 px-4 py-1.5 text-xs font-semibold tracking-wider text-brand-royalBlue dark:text-brand-accentBlue uppercase">
-                    <span class="relative flex h-2.5 w-2.5">
-                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-royalBlue opacity-75"></span>
-                      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-royalBlue"></span>
-                    </span>
-                    Institutional Standard of Corporate Growth
-                </div>
-
-                <h1 id="hero-headline" class="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl tracking-tight leading-[1.05] text-brand-darkText dark:text-white">
-                    Corporate Strategy.<br>
-                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-royalBlue to-brand-emerald">
-                        Absolute Trust.
-                    </span>
-                </h1>
-
-                <p class="text-brand-darkText/70 dark:text-slate-300/80 text-base sm:text-lg lg:text-xl font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                    Engineered for leading enterprises, tech innovators, and high-growth platforms. Experience frictionless direct tax consulting, entity incorporation, legal audits, and statutory protection under Vignesh (15+ Years Authority).
-                </p>
-
-                <!-- Call-to-Action Command Elements -->
-                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
-                    <a href="#booking" class="px-8 py-4 rounded-full bg-brand-royalBlue hover:bg-blue-700 text-white font-bold text-xs tracking-widest shadow-lg shadow-blue-500/20 hover:shadow-xl hover:scale-105 transition-all flex items-center gap-2">
-                        SECURE FREE ADVISORY <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                    <a href="#calculators" class="px-8 py-4 rounded-full bg-black/[0.04] dark:bg-white/5 border border-black/5 dark:border-white/10 text-brand-darkText dark:text-white font-semibold text-xs tracking-widest hover:bg-black/[0.08] dark:hover:bg-white/10 transition-all flex items-center gap-2">
-                        RUN TAX SIMULATOR <i class="fa-solid fa-bolt text-brand-royalBlue"></i>
-                    </a>
-                </div>
-
-                <!-- Live-Counter Verification Metrics -->
-                <div class="grid grid-cols-3 gap-6 pt-12 border-t border-black/5 dark:border-white/5 max-w-lg mx-auto lg:mx-0">
-                    <div class="text-left">
-                        <span class="font-display text-2xl sm:text-4xl font-extrabold text-brand-royalBlue dark:text-brand-accentBlue">15+</span>
-                        <p class="text-[10px] text-slate-400 mt-1 tracking-wider uppercase">Years Authority</p>
-                    </div>
-                    <div class="text-left">
-                        <span class="font-display text-2xl sm:text-4xl font-extrabold text-brand-emerald dark:text-brand-emeraldDark">5K+</span>
-                        <p class="text-[10px] text-slate-400 mt-1 tracking-wider uppercase">Active Audits</p>
-                    </div>
-                    <div class="text-left">
-                        <span class="font-display text-2xl sm:text-4xl font-extrabold text-brand-gold dark:text-brand-goldDark">100%</span>
-                        <p class="text-[10px] text-slate-400 mt-1 tracking-wider uppercase">Filing Accuracy</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Liquid Glass Hero Interactive Simulation Box -->
-            <div class="lg:col-span-5 relative w-full flex justify-center items-center">
-                <div class="relative w-[320px] sm:w-[420px] h-[320px] sm:h-[420px] flex items-center justify-center">
-                    
-                    <!-- Atmospheric Blurs -->
-                    <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-brand-royalBlue/10 to-brand-emerald/10 blur-3xl animate-pulse"></div>
-                    
-                    <!-- Floating Fluid Indicator Card (Bounces) -->
-                    <div class="absolute top-4 left-4 premium-glass-card p-4 rounded-2xl w-44 flex items-center gap-3 animate-bounce" style="animation-duration: 5s;">
-                        <div class="w-10 h-10 rounded-xl bg-brand-emerald/10 flex items-center justify-center text-brand-emerald">
-                            <i class="fa-solid fa-shield-check"></i>
-                        </div>
-                        <div>
-                            <p class="text-[9px] text-slate-400">Compliance Audit</p>
-                            <p class="text-xs font-bold font-display">Zero Risk Standard</p>
-                        </div>
-                    </div>
-
-                    <div class="absolute bottom-4 right-4 premium-glass-card p-4 rounded-2xl w-44 flex items-center gap-3 animate-bounce" style="animation-duration: 7s;">
-                        <div class="w-10 h-10 rounded-xl bg-brand-gold/10 flex items-center justify-center text-brand-gold">
-                            <i class="fa-solid fa-chart-line-up"></i>
-                        </div>
-                        <div>
-                            <p class="text-[9px] text-slate-400">Capital Flow</p>
-                            <p class="text-xs font-bold font-display">Optimized Output</p>
-                        </div>
-                    </div>
-
-                    <!-- Centered Immersive Sphere Ring -->
-                    <div class="w-64 h-64 rounded-full border border-black/5 dark:border-white/10 bg-white/40 dark:bg-brand-navy/40 backdrop-blur-xl flex flex-col items-center justify-center p-6 text-center shadow-2xl relative">
-                        <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-brand-royalBlue to-brand-emerald p-[1px] mb-4">
-                            <div class="w-full h-full bg-white dark:bg-brand-navy rounded-[15px] flex items-center justify-center">
-                                <i class="fa-solid fa-vault text-2xl text-transparent bg-clip-text bg-gradient-to-tr from-brand-royalBlue to-brand-emerald"></i>
-                            </div>
-                        </div>
-                        <h3 class="font-display font-bold text-sm tracking-wide text-brand-darkText dark:text-white uppercase">Secured Vault</h3>
-                        <p class="text-[10px] text-slate-400 mt-1">SLA-Backed Corporate Data Safeguards Enabled</p>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- CORE STRATEGIC SERVICES HUB (BENTO GRID DESIGN) -->
-    <section id="services" class="py-24 px-4 lg:px-8 border-t border-black/[0.04] dark:border-white/5 relative z-10 bg-brand-gray/40 dark:bg-brand-navy/40">
-        <div class="max-w-7xl mx-auto">
-            
-            <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
-                <span class="text-xs font-extrabold text-brand-royalBlue dark:text-brand-accentBlue tracking-[0.25em] uppercase">SYSTEM SERVICES HUB</span>
-                <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-brand-darkText dark:text-white">Taxation & Strategic Architecture</h2>
-                <p class="text-brand-darkText/70 dark:text-slate-300/80 font-light leading-relaxed">
-                    Custom-designed tax models, continuous compliance representation, business formations, and structured auditing programs optimized to shield your assets.
-                </p>
-            </div>
-
-            <!-- Bento Layout Services Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <!-- Service Card 1 -->
-                <div class="premium-glass-card p-8 rounded-3xl flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-brand-royalBlue/10 border border-brand-royalBlue/20 flex items-center justify-center text-brand-royalBlue dark:text-brand-accentBlue text-xl mb-6">
-                            <i class="fa-solid fa-receipt"></i>
-                        </div>
-                        <h3 class="font-display font-bold text-xl text-brand-darkText dark:text-white mb-3">GST Strategy & Filings</h3>
-                        <p class="text-brand-darkText/70 dark:text-slate-400 text-sm font-light leading-relaxed mb-6">
-                            Complete digital input tax credit reconciliation (GSTR-2B aligning), monthly/annual filing operations, corporate ITC planning, and representations during department audits.
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-between border-t border-black/[0.04] dark:border-white/5 pt-4">
-                        <span class="text-[10px] text-brand-royalBlue dark:text-brand-accentBlue font-bold uppercase tracking-wider">REGULATORY COMPLIANCE</span>
-                        <a href="#booking" class="text-brand-royalBlue dark:text-brand-accentBlue hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service Card 2 -->
-                <div class="premium-glass-card p-8 rounded-3xl flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-brand-emerald/10 border border-brand-emerald/20 flex items-center justify-center text-brand-emerald text-xl mb-6">
-                            <i class="fa-solid fa-hand-holding-dollar"></i>
-                        </div>
-                        <h3 class="font-display font-bold text-xl text-brand-darkText dark:text-white mb-3">Corporate Income Tax & TDS</h3>
-                        <p class="text-brand-darkText/70 dark:text-slate-400 text-sm font-light leading-relaxed mb-6">
-                            Comprehensive tax planning designed to optimize asset deductions, monthly withholding computations, prompt TDS filings, and continuous dispute representation.
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-between border-t border-black/[0.04] dark:border-white/5 pt-4">
-                        <span class="text-[10px] text-brand-emerald font-bold uppercase tracking-wider">CAPITAL ADVISORY</span>
-                        <a href="#booking" class="text-brand-royalBlue dark:text-brand-accentBlue hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service Card 3 -->
-                <div class="premium-glass-card p-8 rounded-3xl flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-brand-gold/10 border border-brand-gold/20 flex items-center justify-center text-brand-gold text-xl mb-6">
-                            <i class="fa-solid fa-building-columns"></i>
-                        </div>
-                        <h3 class="font-display font-bold text-xl text-brand-darkText dark:text-white mb-3">Company Incorporation</h3>
-                        <p class="text-brand-darkText/70 dark:text-slate-400 text-sm font-light leading-relaxed mb-6">
-                            Rapid legal formations including Private Limited, LLP setups, MSME, Startup India recognition, legal partnership deeds, and trademark protection filings.
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-between border-t border-black/[0.04] dark:border-white/5 pt-4">
-                        <span class="text-[10px] text-brand-gold font-bold uppercase tracking-wider">BUSINESS STARTUP LAUNCH</span>
-                        <a href="#booking" class="text-brand-royalBlue dark:text-brand-accentBlue hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service Card 4 -->
-                <div class="premium-glass-card p-8 rounded-3xl flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-500 text-xl mb-6">
-                            <i class="fa-solid fa-scale-balanced"></i>
-                        </div>
-                        <h3 class="font-display font-bold text-xl text-brand-darkText dark:text-white mb-3">Payroll & Bookkeeping</h3>
-                        <p class="text-brand-darkText/70 dark:text-slate-400 text-sm font-light leading-relaxed mb-6">
-                            Double-entry professional bookkeeping, real-time balance sheet optimization, payroll orchestration (PF, ESI deductions), and compliant structured records.
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-between border-t border-black/[0.04] dark:border-white/5 pt-4">
-                        <span class="text-[10px] text-purple-500 font-bold uppercase tracking-wider">LEDGER SECURITY</span>
-                        <a href="#booking" class="text-brand-royalBlue dark:text-brand-accentBlue hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service Card 5 -->
-                <div class="premium-glass-card p-8 rounded-3xl flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-500 text-xl mb-6">
-                            <i class="fa-solid fa-stamp"></i>
-                        </div>
-                        <h3 class="font-display font-bold text-xl text-brand-darkText dark:text-white mb-3">Statutory Audits & ROC</h3>
-                        <p class="text-brand-darkText/70 dark:text-slate-400 text-sm font-light leading-relaxed mb-6">
-                            Rigorous independent financial assurance reviews, complete Registrar of Companies (ROC) annual compliance filing updates, and corporate governance checks.
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-between border-t border-black/[0.04] dark:border-white/5 pt-4">
-                        <span class="text-[10px] text-pink-500 font-bold uppercase tracking-wider">COMPLIANCE SHIELD</span>
-                        <a href="#booking" class="text-brand-royalBlue dark:text-brand-accentBlue hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <!-- Service Card 6 -->
-                <div class="premium-glass-card p-8 rounded-3xl flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-500 text-xl mb-6">
-                            <i class="fa-solid fa-folder-open"></i>
-                        </div>
-                        <h3 class="font-display font-bold text-xl text-brand-darkText dark:text-white mb-3">Project Reports & Funding</h3>
-                        <p class="text-brand-darkText/70 dark:text-slate-400 text-sm font-light leading-relaxed mb-6">
-                            Detailed capital projection sheets, business plan blueprints for institutional funding, bank feasibility files, and structured corporate valuation portfolios.
-                        </p>
-                    </div>
-                    <div class="flex items-center justify-between border-t border-black/[0.04] dark:border-white/5 pt-4">
-                        <span class="text-[10px] text-cyan-500 font-bold uppercase tracking-wider">CAPITAL RAISING</span>
-                        <a href="#booking" class="text-brand-royalBlue dark:text-brand-accentBlue hover:translate-x-1 transition-transform duration-300"><i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- AUTONOMOUS COMPLIANCE CALCULATOR DESK -->
-    <section id="calculators" class="py-24 px-4 lg:px-8 relative z-10">
-        <div class="max-w-7xl mx-auto">
-            
-            <div class="text-center max-w-3xl mx-auto mb-20 space-y-4">
-                <span class="text-xs font-extrabold text-brand-royalBlue dark:text-brand-accentBlue tracking-[0.25em] uppercase">SYSTEM METRIC INTELLIGENCE</span>
-                <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-brand-darkText dark:text-white">Real-Time Estimators</h2>
-                <p class="text-brand-darkText/70 dark:text-slate-300/80 font-light leading-relaxed">
-                    Instantly simulate business direct income taxes, GST liabilities, and output precise checklist configurations for regulatory filings.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                
-                <!-- Computational Calculation Terminal (7-cols) -->
-                <div class="lg:col-span-7 premium-glass-card p-8 rounded-3xl flex flex-col justify-between space-y-8">
-                    <div>
-                        <div class="flex items-center justify-between border-b border-black/[0.04] dark:border-white/5 pb-4">
-                            <h3 class="font-display font-bold text-lg text-brand-darkText dark:text-white flex items-center gap-3">
-                                <i class="fa-solid fa-calculator text-brand-royalBlue"></i> Statutory Calculation Engine
-                            </h3>
-                            <span class="text-[9px] font-mono tracking-widest text-slate-400">CORE COMPILER V1.5</span>
-                        </div>
-
-                        <!-- Computation inputs -->
-                        <div class="mt-6 space-y-6">
-                            <div>
-                                <label class="block text-[10px] font-bold uppercase tracking-widest text-brand-darkText/60 dark:text-slate-400 mb-2">Annual Gross Revenue Inflow (INR)</label>
-                                <div class="relative">
-                                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-extrabold">₹</span>
-                                    <input id="calc-inflow" type="number" placeholder="e.g. 2500000" class="w-full bg-black/[0.02] dark:bg-brand-navy/60 border border-black/10 dark:border-white/10 rounded-2xl pl-10 pr-4 py-4 text-brand-darkText dark:text-white font-mono focus:outline-none focus:border-brand-royalBlue transition-all">
-                                </div>
-                            </div>
-
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-[10px] font-bold uppercase tracking-widest text-brand-darkText/60 dark:text-slate-400 mb-2">Corporate Entity Classification</label>
-                                    <select id="calc-category" class="w-full bg-black/[0.02] dark:bg-brand-navy/60 border border-black/10 dark:border-white/10 rounded-2xl px-4 py-4 text-brand-darkText dark:text-white focus:outline-none focus:border-brand-royalBlue transition-all">
-                                        <option value="ind">Individual Proprietor</option>
-                                        <option value="corp">Corporate Pvt Ltd / Public Co.</option>
-                                        <option value="llp">LLP Setup / Partnerships</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block text-[10px] font-bold uppercase tracking-widest text-brand-darkText/60 dark:text-slate-400 mb-2">GST Bracket Range</label>
-                                    <select id="calc-gst-percent" class="w-full bg-black/[0.02] dark:bg-brand-navy/60 border border-black/10 dark:border-white/10 rounded-2xl px-4 py-4 text-brand-darkText dark:text-white focus:outline-none focus:border-brand-royalBlue transition-all">
-                                        <option value="0">No Indirect GST Liability</option>
-                                        <option value="18" selected>18% Standard Tier</option>
-                                        <option value="12">12% Secondary Tier</option>
-                                        <option value="5">5% Essential Tier</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Computed Real-time Display with Chart Canvas -->
-                    <div id="metric-out-block" class="hidden rounded-2xl bg-black/[0.02] dark:bg-brand-navy/80 border border-brand-emerald/20 p-6 space-y-6">
-                        <div class="flex items-center justify-between border-b border-black/[0.04] dark:border-white/5 pb-2">
-                            <span class="text-[10px] text-brand-darkText/60 dark:text-slate-400 font-bold uppercase tracking-wider">COMPUTED SYSTEM ESTIMATE</span>
-                            <span class="text-[9px] text-brand-emerald bg-brand-emerald/15 px-2 py-0.5 rounded-full font-bold">STABLE</span>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                            <div class="space-y-4">
-                                <div>
-                                    <span class="text-[9px] text-slate-400 uppercase block font-semibold tracking-wider">Estimated Direct Tax Liability</span>
-                                    <span id="out-direct" class="font-display font-extrabold text-2xl text-brand-royalBlue dark:text-brand-accentBlue font-mono">₹0</span>
-                                </div>
-                                <div>
-                                    <span class="text-[9px] text-slate-400 uppercase block font-semibold tracking-wider">Estimated Indirect GST Pool</span>
-                                    <span id="out-gst" class="font-display font-extrabold text-2xl text-brand-royalBlue dark:text-brand-accentBlue font-mono">₹0</span>
-                                </div>
-                            </div>
-                            <!-- Live Rendered Canvas Allocation Breakdown Chart -->
-                            <div class="flex flex-col items-center justify-center">
-                                <canvas id="chart-canvas" width="140" height="140" class="max-w-[140px] max-h-[140px]"></canvas>
-                                <span class="text-[9px] text-slate-400 mt-2 font-mono">Tax vs. GST Outflow Ratio</span>
-                            </div>
-                        </div>
-                        <p class="text-[10px] text-slate-400 italic">
-                            *Estimated outputs are mapped using contemporary legal schedules. Exact statutory structures require customized ledger evaluation.
-                        </p>
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <button id="compute-btn" class="flex-1 py-4 bg-brand-royalBlue hover:bg-blue-700 text-white font-bold text-xs tracking-widest uppercase rounded-2xl shadow-lg transition-all">
-                            COMPILE COMPLIANCE METRIC
-                        </button>
-                        <button id="ai-strategy-btn" class="flex-1 py-4 bg-gradient-to-r from-brand-royalBlue to-brand-emerald hover:opacity-90 text-white font-bold text-xs tracking-widest uppercase rounded-2xl shadow-lg transition-all flex items-center justify-center gap-2">
-                            ✨ GENERATE AI STRATEGY
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Document Checklist Dynamic Desk (5-cols) -->
-                <div class="lg:col-span-5 premium-glass-card p-8 rounded-3xl flex flex-col justify-between space-y-6">
-                    <div>
-                        <div class="flex items-center justify-between border-b border-black/[0.04] dark:border-white/5 pb-4 mb-4">
-                            <h3 class="font-display font-bold text-lg text-brand-darkText dark:text-white flex items-center gap-3">
-                                <i class="fa-solid fa-list-check text-brand-gold"></i> Dynamic Setup Checklist
-                            </h3>
-                        </div>
-
-                        <p class="text-xs text-brand-darkText/70 dark:text-slate-400 font-light leading-relaxed mb-6">
-                            Choose your business transaction scope to load your compliance document preparation requirements instantly.
-                        </p>
-
-                        <select id="checklist-category-selector" class="w-full bg-black/[0.02] dark:bg-brand-navy/60 border border-black/10 dark:border-white/10 rounded-2xl px-4 py-4 text-xs text-brand-darkText dark:text-white focus:outline-none focus:border-brand-royalBlue mb-6 transition-all">
-                            <option value="pvt">Pvt Ltd Registration Papers</option>
-                            <option value="gst">GST Ongoing Filing Records</option>
-                            <option value="it">Income Tax Filing Audits</option>
-                            <option value="tm">Trademark Protection Filing</option>
-                        </select>
-
-                        <!-- Live Checklist Output Node -->
-                        <ul id="checklist-holder" class="space-y-3 text-xs text-brand-darkText/80 dark:text-slate-300 font-light overflow-y-auto max-h-[180px]">
-                            <!-- Dynamic checklist rows render here -->
-                        </ul>
-                    </div>
-
-                    <div class="border-t border-black/[0.04] dark:border-white/5 pt-4">
-                        <p class="text-[10px] text-slate-400 italic">
-                            Select category to update checklist targets.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Dynamic AI Strategy Report Output Container -->
-            <div id="ai-strategy-container" class="hidden mt-8 premium-glass-card p-8 rounded-3xl border border-brand-emerald/30 space-y-6 animate-fade-in">
-                <div class="flex items-center justify-between border-b border-black/[0.04] dark:border-white/5 pb-4">
-                    <h4 class="font-display font-bold text-lg text-brand-darkText dark:text-white flex items-center gap-2">
-                        <i class="fa-solid fa-sparkles text-brand-gold"></i> ✨ AI STRATEGIC TAX ROADMAP
-                    </h4>
-                    <span class="text-[9px] font-mono tracking-widest text-brand-emerald uppercase font-bold">SYSTEM REPORT STAGE 1</span>
-                </div>
-                <div id="ai-strategy-content" class="text-xs sm:text-sm font-light text-brand-darkText/80 dark:text-slate-300 space-y-4 leading-relaxed whitespace-pre-line">
-                    <!-- Streamed content populated by Gemini API -->
-                </div>
-                <div class="flex justify-end pt-4 border-t border-black/[0.04] dark:border-white/5">
-                    <button onclick="document.getElementById('ai-strategy-container').classList.add('hidden')" class="px-5 py-2.5 bg-black/5 dark:bg-white/5 rounded-xl text-xs font-semibold hover:bg-black/10">DISMISS ROADMAP</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- BIOGRAPHY, PHILOSOPHY & FOUNDER PROFILE -->
-    <section id="about" class="py-24 px-4 lg:px-8 border-t border-black/[0.04] dark:border-white/5 relative z-10 bg-brand-gray/20 dark:bg-brand-navy/40">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Founder Portrait Representation -->
-                <div class="lg:col-span-5 relative flex justify-center">
-                    <div class="relative w-80 h-96 rounded-3xl border border-black/5 dark:border-white/10 bg-gradient-to-tr from-brand-royalBlue to-brand-navy overflow-hidden group shadow-2xl p-1 flex flex-col justify-end">
-                        <div class="absolute inset-0 bg-gradient-to-t from-brand-darkText via-brand-darkText/30 to-transparent z-10"></div>
-                        
-                        <!-- Dynamic Background Graphic to simulate 3D -->
-                        <div class="absolute inset-0 bg-slate-900 flex items-center justify-center opacity-70">
-                            <i class="fa-solid fa-signature text-9xl text-white/5"></i>
-                        </div>
-
-                        <!-- Info Card Overlay -->
-                        <div class="p-6 relative z-20">
-                            <span class="text-[9px] text-brand-emeraldDark font-extrabold tracking-[0.2em] block uppercase mb-1">FOUNDING EXECUTIVE</span>
-                            <h4 class="font-display font-extrabold text-2xl text-white">Vignesh</h4>
-                            <p class="text-xs text-slate-300 font-light mt-1">15+ Years Fiduciary Advisory Expertise</p>
-                            
-                            <!-- Custom Badging -->
-                            <div class="mt-4 flex flex-wrap gap-2">
-                                <span class="bg-brand-royalBlue/20 text-brand-accentBlue border border-brand-royalBlue/30 text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">Tax Litigation Specialist</span>
-                                <span class="bg-brand-emerald/20 text-brand-emeraldDark border border-brand-emerald/30 text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">Statutory Auditor</span>
-                            </div>
-                        </div>
-
-                        <!-- Absolute Shield Overlay -->
-                        <div class="absolute top-4 left-4 z-20 px-3 py-1 bg-brand-navy/90 border border-brand-emerald/30 rounded-full flex items-center gap-2 text-[10px] text-brand-emeraldDark font-bold">
-                            <span class="w-1.5 h-1.5 rounded-full bg-brand-emerald animate-ping"></span> LEAD ARCHITECT
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Strategic Philosophy Copy -->
-                <div class="lg:col-span-7 space-y-8">
-                    <span class="text-xs font-extrabold text-brand-royalBlue dark:text-brand-accentBlue tracking-[0.25em] uppercase">VIGNESH & CO TRUST FACTOR</span>
-                    <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-brand-darkText dark:text-white leading-tight">Setting the Standard in Capital Integrity.</h2>
-                    
-                    <p class="text-brand-darkText/80 dark:text-slate-300/90 text-base font-light leading-relaxed">
-                        Under the direct corporate governance of <strong class="text-brand-darkText dark:text-white font-bold">Vignesh</strong>, Vinayaga Associates has set the premium standard for cross-border taxation, entity registration, and asset protection mechanisms across India for near 15 years.
-                    </p>
-                    <p class="text-brand-darkText/80 dark:text-slate-300/90 text-base font-light leading-relaxed">
-                        We don't simply balance general ledgers; we engineer custom tax-shield frameworks. Our advisory model seamlessly marries standard physical accuracy with elite API-driven analysis, ensuring total defense during regulatory assessments.
-                    </p>
-
-                    <!-- Strategic Advantage Highlights -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t border-black/[0.04] dark:border-white/5">
-                        <div class="flex gap-4">
-                            <div class="w-11 h-11 rounded-2xl bg-brand-royalBlue/10 border border-brand-royalBlue/20 flex items-center justify-center text-brand-royalBlue dark:text-brand-accentBlue flex-shrink-0 text-lg">
-                                <i class="fa-solid fa-shield"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-display font-bold text-sm text-brand-darkText dark:text-white">Absolute Verification Safeguards</h4>
-                                <p class="text-xs text-slate-400 mt-1">Robust ledger reconciliations designed to establish zero filing discrepancies.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4">
-                            <div class="w-11 h-11 rounded-2xl bg-brand-emerald/10 border border-brand-emerald/20 flex items-center justify-center text-brand-emerald flex-shrink-0 text-lg">
-                                <i class="fa-solid fa-clock-rotate-left"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-display font-bold text-sm text-brand-darkText dark:text-white">Accelerated SLA Deliverables</h4>
-                                <p class="text-xs text-slate-400 mt-1">Company incorporations, legal trademarks, and audit approvals processed in fast track lanes.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- PREMIUM ACCORDION FAQ SECTION -->
-    <section id="faq" class="py-24 px-4 lg:px-8 border-t border-black/[0.04] dark:border-white/5 relative z-10">
-        <div class="max-w-4xl mx-auto">
-            
-            <div class="text-center mb-16 space-y-4">
-                <span class="text-xs font-extrabold text-brand-royalBlue dark:text-brand-accentBlue tracking-[0.25em] uppercase">SYSTEM ADVISORY FAQ</span>
-                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-brand-darkText dark:text-white">Regulatory Directives</h2>
-                <p class="text-brand-darkText/70 dark:text-slate-300/80 font-light">
-                    Direct access to verified responses outlining entity compliance protocols.
-                </p>
-            </div>
-
-            <div class="space-y-4">
-                
-                <!-- FAQ Accordion 1 -->
-                <div class="premium-glass-card rounded-2xl overflow-hidden">
-                    <button class="faq-btn w-full px-6 py-5 text-left flex items-center justify-between text-brand-darkText dark:text-white font-bold text-sm sm:text-base focus:outline-none">
-                        <span>How rapidly can you register a Private Limited Company?</span>
-                        <i class="fa-solid fa-angle-down text-brand-royalBlue dark:text-brand-accentBlue transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-desc hidden px-6 pb-5 text-xs sm:text-sm text-brand-darkText/70 dark:text-slate-400 font-light leading-relaxed animate-fade-in">
-                        Under our streamlined MCA SPICe+ digital routing framework, once valid KYC vectors (PAN, Aadhaar, address proofs) are verified, incorporation files are completely approved in 5 to 7 operational business days.
-                    </div>
-                </div>
-
-                <!-- FAQ Accordion 2 -->
-                <div class="premium-glass-card rounded-2xl overflow-hidden">
-                    <button class="faq-btn w-full px-6 py-5 text-left flex items-center justify-between text-brand-darkText dark:text-white font-bold text-sm sm:text-base focus:outline-none">
-                        <span>What is the system for recovering missed GST Input Credits?</span>
-                        <i class="fa-solid fa-angle-down text-brand-royalBlue dark:text-brand-accentBlue transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-desc hidden px-6 pb-5 text-xs sm:text-sm text-brand-darkText/70 dark:text-slate-400 font-light leading-relaxed animate-fade-in">
-                        We run digital GSTR-2B reconciliations mapping your purchase records against vendor uploads, matching discrepancies immediately and retrieving missing tax credits safely.
-                    </div>
-                </div>
-
-                <!-- FAQ Accordion 3 -->
-                <div class="premium-glass-card rounded-2xl overflow-hidden">
-                    <button class="faq-btn w-full px-6 py-5 text-left flex items-center justify-between text-brand-darkText dark:text-white font-bold text-sm sm:text-base focus:outline-none">
-                        <span>How does Vinayaga Associates handle tax department notices?</span>
-                        <i class="fa-solid fa-angle-down text-brand-royalBlue dark:text-brand-accentBlue transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-desc hidden px-6 pb-5 text-xs sm:text-sm text-brand-darkText/70 dark:text-slate-400 font-light leading-relaxed animate-fade-in">
-                        Vignesh and our legal advocates construct professional structured responses, map statutory documents directly to defense requirements, and handle face-to-face representations before appellate jurisdictions.
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-    <!-- SECURED APPOINTMENT SCHEDULER & PHYSICAL BASE -->
-    <section id="booking" class="py-24 px-4 lg:px-8 border-t border-black/[0.04] dark:border-white/5 relative z-10 bg-brand-gray/40 dark:bg-brand-navy/60">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                
-                <!-- Address Details & Routing -->
-                <div class="lg:col-span-5 space-y-8">
-                    <div>
-                        <span class="text-xs font-extrabold text-brand-royalBlue dark:text-brand-accentBlue tracking-[0.25em] uppercase">SYSTEM COORDINATES</span>
-                        <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-brand-darkText dark:text-white mt-2">Secure Consultation</h2>
-                        <p class="text-brand-darkText/70 dark:text-slate-400 font-light text-sm mt-4">
-                            Connect immediately with our primary advisory team to schedule detailed virtual or physical diagnostic analysis.
-                        </p>
-                    </div>
-
-                    <!-- Direct Reach Cards -->
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-white/60 dark:bg-brand-cardDark/60 border border-black/[0.04] dark:border-white/5">
-                            <div class="w-11 h-11 rounded-2xl bg-brand-royalBlue/10 flex items-center justify-center text-brand-royalBlue dark:text-brand-accentBlue flex-shrink-0 text-lg">
-                                <i class="fa-solid fa-envelope-open-text"></i>
-                            </div>
-                            <div>
-                                <span class="text-[10px] text-slate-400 block font-bold">SECURED MAILBOX</span>
-                                <a href="mailto:info@vinayagaassociates.com" class="text-xs font-bold text-brand-darkText dark:text-white hover:underline">info@vinayagaassociates.com</a>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-4 p-4 rounded-2xl bg-white/60 dark:bg-brand-cardDark/60 border border-black/[0.04] dark:border-white/5">
-                            <div class="w-11 h-11 rounded-2xl bg-brand-emerald/10 flex items-center justify-center text-brand-emerald flex-shrink-0 text-lg">
-                                <i class="fa-solid fa-headset"></i>
-                            </div>
-                            <div>
-                                <span class="text-[10px] text-slate-400 block font-bold">HOTLINE SUPPORT DESK</span>
-                                <a href="tel:+919876543210" class="text-xs font-bold text-brand-darkText dark:text-white hover:underline">+91 98765 43210</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Physical Map Representation -->
-                    <div class="rounded-3xl border border-black/[0.04] dark:border-white/10 overflow-hidden h-44 relative shadow-lg">
-                        <div class="absolute inset-0 bg-slate-950/90 flex flex-col items-center justify-center p-6 text-center z-10">
-                            <i class="fa-solid fa-location-dot text-3xl text-brand-royalBlue mb-3"></i>
-                            <h4 class="font-display font-bold text-sm text-white">Main Consulting Office</h4>
-                            <p class="text-[11px] text-slate-300 mt-1 font-light">Chennai, Tamil Nadu, India</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Interactive Booking Form Wrapper -->
-                <div class="lg:col-span-7 premium-glass-card p-8 rounded-3xl space-y-6">
-                    <div class="border-b border-black/[0.04] dark:border-white/5 pb-4">
-                        <h3 class="font-display font-bold text-xl text-brand-darkText dark:text-white">Secure Calendar Reservation</h3>
-                        <p class="text-xs text-brand-darkText/60 dark:text-slate-400 mt-1">Select your corporate scope to reserve a focused assessment slot.</p>
-                    </div>
-
-                    <form id="booking-portal-form" class="space-y-6">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-[10px] font-bold uppercase tracking-widest text-brand-darkText/60 dark:text-slate-400 mb-2">Full Representative Name</label>
-                                <input id="book-name" type="text" required placeholder="e.g., Vignesh Raj" class="w-full bg-black/[0.02] dark:bg-brand-navy/60 border border-black/10 dark:border-white/10 rounded-2xl px-4 py-3.5 text-xs text-brand-darkText dark:text-white focus:outline-none focus:border-brand-royalBlue transition-all">
-                            </div>
-                            <div>
-                                <label class="block text-[10px] font-bold uppercase tracking-widest text-brand-darkText/60 dark:text-slate-400 mb-2">Corporate Business Email</label>
-                                <input id="book-email" type="email" required placeholder="e.g., vignesh@co.com" class="w-full bg-black/[0.02] dark:bg-brand-navy/60 border border-black/10 dark:border-white/10 rounded-2xl px-4 py-3.5 text-xs text-brand-darkText dark:text-white focus:outline-none focus:border-brand-royalBlue transition-all">
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-[10px] font-bold uppercase tracking-widest text-brand-darkText/60 dark:text-slate-400 mb-2">Direct Phone Contact</label>
-                                <input id="book-phone" type="tel" required placeholder="e.g., +91 98765 43210" class="w-full bg-black/[0.02] dark:bg-brand-navy/60 border border-black/10 dark:border-white/10 rounded-2xl px-4 py-3.5 text-xs text-brand-darkText dark:text-white focus:outline-none focus:border-brand-royalBlue transition-all">
-                            </div>
-                            <div>
-                                <label class="block text-[10px] font-bold uppercase tracking-widest text-brand-darkText/60 dark:text-slate-400 mb-2">Core Service Requirement</label>
-                                <select id="book-service" class="w-full bg-black/[0.02] dark:bg-brand-navy/60 border border-black/10 dark:border-white/10 rounded-2xl px-4 py-3.5 text-xs text-brand-darkText dark:text-white focus:outline-none focus:border-brand-royalBlue transition-all">
-                                    <option value="GST Services">GST Audit & Filing Compliance</option>
-                                    <option value="Income Tax">Income Tax & Statutory Audits</option>
-                                    <option value="Company Registration">Business Setup & Incorporation</option>
-                                    <option value="Trademark & MSME">Trademark protection / MSME certifications</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div>
-                            <label class="block text-[10px] font-bold uppercase tracking-widest text-brand-darkText/60 dark:text-slate-400 mb-2">Specific Strategic Requirements / Notes</label>
-                            <textarea id="book-msg" rows="3" placeholder="Explain your requirements..." class="w-full bg-black/[0.02] dark:bg-brand-navy/60 border border-black/10 dark:border-white/10 rounded-2xl px-4 py-3.5 text-xs text-brand-darkText dark:text-white focus:outline-none focus:border-brand-royalBlue transition-all"></textarea>
-                        </div>
-
-                        <!-- Submission Status Alerts -->
-                        <div id="booking-success" class="hidden p-4 rounded-2xl bg-brand-emerald/10 border border-brand-emerald/30 text-xs text-brand-emerald font-bold tracking-wide animate-fade-in">
-                            <i class="fa-solid fa-circle-check mr-2"></i> Strategic session booked successfully. Direct handoff dispatched to our advisory registry.
-                        </div>
-
-                        <button type="submit" class="w-full py-4 bg-brand-royalBlue hover:bg-blue-700 text-white font-bold text-xs tracking-widest uppercase rounded-2xl shadow-lg transition-all">
-                            EXECUTE CALENDAR BOOKING
-                        </button>
-                    </form>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- SECURED ADMIN EXPERIENCE PANEL -->
-    <section id="admin" class="py-24 px-4 lg:px-8 border-t border-black/[0.04] dark:border-white/5 relative z-10">
-        <div class="max-w-7xl mx-auto">
-            
-            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-                <span class="text-xs font-extrabold text-brand-royalBlue dark:text-brand-accentBlue tracking-[0.25em] uppercase">INTERNAL SECURED DECK</span>
-                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-brand-darkText dark:text-white">Admin Management Desk</h2>
-                <p class="text-brand-darkText/70 dark:text-slate-300/80 font-light text-sm">
-                    Review captured leads, monitor total system interactions, and analyze metrics instantly.
-                </p>
-            </div>
-
-            <!-- Admin Workspace Panel -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                
-                <!-- Metric Dashboard Cards (5-cols) -->
-                <div class="lg:col-span-5 grid grid-cols-2 gap-4">
-                    <div class="premium-glass-card p-6 rounded-2xl text-center flex flex-col justify-center">
-                        <span class="text-[9px] text-slate-400 font-extrabold uppercase tracking-widest">Total Conversations</span>
-                        <span id="metric-conversations" class="font-display font-extrabold text-4xl text-brand-royalBlue dark:text-brand-accentBlue my-2 font-mono">142</span>
-                        <span class="text-[9px] text-brand-emerald font-bold"><i class="fa-solid fa-caret-up"></i> +12% this week</span>
-                    </div>
-
-                    <div class="premium-glass-card p-6 rounded-2xl text-center flex flex-col justify-center">
-                        <span class="text-[9px] text-slate-400 font-extrabold uppercase tracking-widest">Converted Leads</span>
-                        <span id="metric-leads" class="font-display font-extrabold text-4xl text-brand-emerald my-2 font-mono">38</span>
-                        <span class="text-[9px] text-brand-emerald font-bold"><i class="fa-solid fa-caret-up"></i> +24% conversion</span>
-                    </div>
-
-                    <div class="premium-glass-card p-6 rounded-2xl text-center col-span-2 space-y-4">
-                        <span class="text-[9px] text-slate-400 font-extrabold uppercase tracking-widest block">System Diagnostics Status</span>
-                        <div class="flex justify-between items-center text-xs">
-                            <span class="text-brand-darkText/70 dark:text-slate-300">AI Knowledge Base</span>
-                            <span class="text-brand-emerald font-extrabold uppercase tracking-wide">Secured & Active</span>
-                        </div>
-                        <div class="flex justify-between items-center text-xs">
-                            <span class="text-brand-darkText/70 dark:text-slate-300">Lead Database API</span>
-                            <span class="text-brand-emerald font-extrabold uppercase tracking-wide">Sync Connected</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Captured Leads Database Visualizer (7-cols) -->
-                <div class="lg:col-span-7 premium-glass-card p-8 rounded-3xl space-y-4">
-                    <div class="flex items-center justify-between border-b border-black/[0.04] dark:border-white/5 pb-4">
-                        <h4 class="font-display font-bold text-md text-brand-darkText dark:text-white">Active System Leads Ledger</h4>
-                        <span class="text-[9px] text-brand-royalBlue bg-brand-royalBlue/10 border border-brand-royalBlue/25 px-2.5 py-1 rounded-full uppercase font-mono">SECURED ACCESS</span>
-                    </div>
-
-                    <!-- Leads List (Populates dynamically on form submissions and chatbot captures) -->
-                    <div class="overflow-y-auto max-h-[190px] pr-2">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="border-b border-black/[0.04] dark:border-white/5 text-[9px] tracking-wider uppercase text-brand-darkText/60 dark:text-slate-400">
-                                    <th class="py-2">Name</th>
-                                    <th class="py-2">Service</th>
-                                    <th class="py-2">Contact</th>
-                                    <th class="py-2 text-right">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody id="admin-leads-rows" class="text-xs font-light text-brand-darkText/80 dark:text-slate-300">
-                                <!-- Default Mock Leads -->
-                                <tr class="border-b border-black/[0.02] dark:border-white/5 last:border-0">
-                                    <td class="py-3 font-semibold text-brand-darkText dark:text-white">Aniket Mehta</td>
-                                    <td class="py-3">GST Audit Setup</td>
-                                    <td class="py-3 font-mono">aniket@mehta.com</td>
-                                    <td class="py-3 text-right text-brand-emerald font-bold uppercase text-[9px]">New</td>
-                                </tr>
-                                <tr class="border-b border-black/[0.02] dark:border-white/5 last:border-0">
-                                    <td class="py-3 font-semibold text-brand-darkText dark:text-white">Meera Nair</td>
-                                    <td class="py-3">Pvt Ltd Setup</td>
-                                    <td class="py-3 font-mono">meera@nairllp.in</td>
-                                    <td class="py-3 text-right text-brand-gold font-bold uppercase text-[9px]">Pending</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- SYSTEM BOTTOM BRAND FOOTER -->
-    <footer class="border-t border-black/[0.04] dark:border-white/5 bg-white dark:bg-slate-950 py-16 px-4 lg:px-8 relative z-10 text-slate-400 text-xs">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-royalBlue to-brand-emerald p-[1px] shadow-lg shadow-blue-500/10">
-                    <div class="w-full h-full bg-white dark:bg-brand-navy rounded-[10px] flex items-center justify-center font-bold text-xs text-brand-royalBlue">VA</div>
-                </div>
-                <div class="flex flex-col">
-                    <span class="font-display font-semibold text-brand-darkText dark:text-white">VINAYAGA ASSOCIATES</span>
-                    <span class="text-[9px] tracking-wider text-brand-emerald">TRUSTED TAX CONSULTANCY DESK</span>
-                </div>
-            </div>
-            
-            <div class="flex flex-wrap gap-6 text-brand-darkText/60 dark:text-slate-400 text-xs">
-                <a href="#services" class="hover:text-brand-royalBlue transition-colors">Services Hub</a>
-                <a href="#about" class="hover:text-brand-royalBlue transition-colors">Vignesh Profile</a>
-                <a href="#calculators" class="hover:text-brand-royalBlue transition-colors">Calculators</a>
-                <a href="#booking" class="hover:text-brand-royalBlue transition-colors">Appointment Desk</a>
-            </div>
-
-            <div class="text-[10px] text-center md:text-right font-light text-slate-400">
-                &copy; 2026 VINAYAGA ASSOCIATES. ALL RIGHTS RESERVED. <br>
-                <span class="text-[9px] text-brand-royalBlue dark:text-brand-accentBlue">Built with Compliance Architecture and Total Security.</span>
-            </div>
-        </div>
-    </footer>
-
-    <!-- INTERACTIVE FLOATING UTILITIES (CALL & WHATSAPP) -->
-    <div class="fixed bottom-6 left-6 z-40 flex flex-col gap-3">
-        <!-- Live Call Desk Hotkey -->
-        <a href="tel:+919790357905" class="w-12 h-12 rounded-full bg-brand-gold hover:bg-yellow-600 text-white flex items-center justify-center text-xl shadow-2xl transition-all hover:scale-110" title="Direct Phone Hotline">
-            <i class="fa-solid fa-phone"></i>
+  </div>
+
+  <div id="mobile-drawer" class="hidden lg:hidden mt-4 rounded-2xl border rule bg-paper dark:bg-ink-800 p-6 absolute left-4 right-4 shadow-xl">
+    <div class="flex flex-col gap-5 text-sm font-semibold">
+      <a href="#services" class="mobile-link flex items-center justify-between">Services <i class="fa-solid fa-angle-right text-xs text-brass"></i></a>
+      <a href="#about" class="mobile-link flex items-center justify-between">About Us <i class="fa-solid fa-angle-right text-xs text-brass"></i></a>
+      <a href="#calculators" class="mobile-link flex items-center justify-between">Calculators <i class="fa-solid fa-angle-right text-xs text-brass"></i></a>
+      <a href="#faq" class="mobile-link flex items-center justify-between">FAQ <i class="fa-solid fa-angle-right text-xs text-brass"></i></a>
+      <hr class="rule">
+      <a href="#booking" class="mobile-link w-full text-center py-3.5 rounded-full bg-ink-900 dark:bg-brass text-paper dark:text-ink-900 text-xs font-bold uppercase tracking-widest">Book a Consultation</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="relative pt-40 pb-24 px-4 lg:px-10">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+
+    <div class="lg:col-span-7 space-y-7 text-center lg:text-left reveal">
+      <span class="inline-flex items-center gap-2 text-[11px] font-bold tracking-[0.2em] uppercase text-brass">
+        <span class="w-6 h-px bg-brass"></span> Trusted Tax & Compliance Partner
+      </span>
+      <h1 class="font-serif font-semibold text-4xl sm:text-6xl leading-[1.08] tracking-tight">
+        Clarity in Compliance.<br>
+        <span class="italic text-brass">Built on Trust.</span>
+      </h1>
+      <p class="text-ink-900/70 dark:text-paper/70 text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+        From GST filings to company incorporation, we handle the paperwork so you can focus on running your business. Personal advisory, plain language, always on time.
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+        <a href="#booking" class="px-7 py-3.5 rounded-full bg-ink-900 dark:bg-brass text-paper dark:text-ink-900 text-xs font-bold tracking-[0.1em] uppercase hover:bg-brass dark:hover:bg-brass-light transition-colors flex items-center gap-2">
+          Book a Free Consultation <i class="fa-solid fa-arrow-right text-[10px]"></i>
         </a>
-    </div>
-
-    <!-- Symmetrical Right Floating Hotkey (WhatsApp Anchor) -->
-    <div class="fixed bottom-6 right-24 z-40">
-        <a href="https://wa.me/919790357905?text=Hello%20Vignesh,%20I%20would%20like%20to%20consult%20regarding%20corporate%20tax%20compliance." target="_blank" rel="noopener noreferrer" class="group relative w-12 h-12 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white flex items-center justify-center shadow-2xl transition-all hover:scale-110" title="Direct Desk WhatsApp Handoff">
-            <i class="fa-brands fa-whatsapp text-2xl"></i>
-            <!-- Premium Dynamic Tooltip -->
-            <span class="absolute right-14 top-1/2 -translate-y-1/2 bg-brand-cardDark border border-white/5 text-white text-[9px] tracking-wider uppercase font-extrabold px-3 py-1.5 rounded-xl whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-300">
-                Talk with Vignesh Direct
-            </span>
+        <a href="#calculators" class="px-7 py-3.5 rounded-full border rule text-xs font-bold tracking-[0.1em] uppercase hover:border-brass hover:text-brass transition-colors">
+          Try the Tax Calculator
         </a>
+      </div>
+
+      <div class="grid grid-cols-3 gap-6 pt-10 border-t rule max-w-md mx-auto lg:mx-0">
+        <div class="text-left">
+          <span class="num block text-2xl sm:text-3xl font-semibold text-brass">5+</span>
+          <p class="text-[10px] uppercase tracking-wider text-ink-900/50 dark:text-paper/50 mt-1">Years Experience</p>
+        </div>
+        <div class="text-left">
+          <span class="num block text-2xl sm:text-3xl font-semibold text-brass">100+</span>
+          <p class="text-[10px] uppercase tracking-wider text-ink-900/50 dark:text-paper/50 mt-1">Clients Served</p>
+        </div>
+        <div class="text-left">
+          <span class="num block text-2xl sm:text-3xl font-semibold text-brass">99%</span>
+          <p class="text-[10px] uppercase tracking-wider text-ink-900/50 dark:text-paper/50 mt-1">On-Time Filings</p>
+        </div>
+      </div>
     </div>
 
-    <!-- WORLD-CLASS AI CHAT CONCIERGE INTERACTIVE SUITE -->
-    <div id="ai-chat-concierge" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
-        
-        <!-- Animated notification badge -->
-        <div id="chat-notification" class="absolute -top-1 -left-1 w-4 h-4 bg-red-500 text-[8px] font-extrabold text-white rounded-full flex items-center justify-center animate-bounce">1</div>
+    <!-- Signature seal element -->
+    <div class="lg:col-span-5 flex justify-center reveal" style="transition-delay:.1s">
+      <div class="relative w-[300px] h-[300px] sm:w-[360px] sm:h-[360px]">
 
-        <!-- Float Circular Breathing Chat Button -->
-        <button id="chat-trigger-orb" class="ai-orb-pulse w-14 h-14 rounded-full bg-gradient-to-tr from-brand-royalBlue via-brand-emerald to-brand-royalBlue p-[2px] flex items-center justify-center shadow-2xl focus:outline-none transition-transform active:scale-95">
-            <div class="w-full h-full bg-brand-darkText dark:bg-brand-navy rounded-full flex items-center justify-center text-white text-xl">
-                <i id="orb-icon" class="fa-solid fa-brain-circuit text-brand-emeraldDark"></i>
+        <div class="absolute top-2 -left-4 sm:-left-8 stamp-tag card-paper rounded-xl px-4 py-3 flex items-center gap-3 max-w-[170px]">
+          <i class="fa-solid fa-check text-moss"></i>
+          <div>
+            <p class="text-[9px] text-ink-900/50 dark:text-paper/50">Zero-Error</p>
+            <p class="text-xs font-semibold font-serif">Filing Standard</p>
+          </div>
+        </div>
+
+        <div class="absolute bottom-4 -right-4 sm:-right-8 stamp-tag card-paper rounded-xl px-4 py-3 flex items-center gap-3 max-w-[170px]" style="animation-delay:.3s">
+          <i class="fa-solid fa-coins text-brass"></i>
+          <div>
+            <p class="text-[9px] text-ink-900/50 dark:text-paper/50">Structured</p>
+            <p class="text-xs font-semibold font-serif">Tax Planning</p>
+          </div>
+        </div>
+
+        <svg viewBox="0 0 300 300" class="w-full h-full">
+          <circle cx="150" cy="150" r="130" fill="none" stroke="currentColor" class="text-ink-900/10 dark:text-paper/10" stroke-width="1"/>
+          <g class="seal-ring text-brass" style="transform-origin: 150px 150px;">
+            <circle cx="150" cy="150" r="112" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 6"/>
+          </g>
+          <circle cx="150" cy="150" r="96" fill="none" stroke="currentColor" class="text-brass" stroke-width="1"/>
+          <text font-family="Fraunces, serif" font-size="15" letter-spacing="4" class="fill-ink-900 dark:fill-paper" font-style="italic">
+            <textPath href="#circlePath" startOffset="2%">EST. [YEAR] &#8226; CHARTERED TAX ADVISORY &#8226; CHENNAI &#8226;</textPath>
+          </text>
+          <path id="circlePath" d="M 150,150 m -96,0 a 96,96 0 1,1 192,0 a 96,96 0 1,1 -192,0" fill="none"/>
+          <text x="150" y="145" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-weight="600" font-size="44" class="fill-ink-900 dark:fill-paper">VA</text>
+          <text x="150" y="172" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" letter-spacing="2" class="fill-brass">TRUSTED &amp; VERIFIED</text>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="py-24 px-4 lg:px-10 border-t rule">
+  <div class="max-w-6xl mx-auto">
+    <div class="max-w-2xl mb-16 reveal">
+      <span class="text-[11px] font-bold tracking-[0.2em] uppercase text-brass">What We Offer</span>
+      <h2 class="font-serif font-semibold text-3xl sm:text-4xl mt-3">Services built around your business</h2>
+      <p class="text-ink-900/60 dark:text-paper/60 mt-4 leading-relaxed">From day-to-day GST filings to company incorporation and audits, we cover the compliance work so you don't have to.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="card-paper rounded-2xl p-7 reveal">
+        <div class="w-11 h-11 rounded-full border-2 border-brass flex items-center justify-center text-brass mb-5"><i class="fa-solid fa-receipt"></i></div>
+        <h3 class="font-serif font-semibold text-lg mb-2">GST Strategy & Filings</h3>
+        <p class="text-sm text-ink-900/60 dark:text-paper/60 leading-relaxed">Input tax credit reconciliation, monthly returns, and representation during regulatory audits.</p>
+      </div>
+      <div class="card-paper rounded-2xl p-7 reveal" style="transition-delay:.05s">
+        <div class="w-11 h-11 rounded-full border-2 border-moss flex items-center justify-center text-moss mb-5"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+        <h3 class="font-serif font-semibold text-lg mb-2">Income Tax & TDS</h3>
+        <p class="text-sm text-ink-900/60 dark:text-paper/60 leading-relaxed">Tax planning, accurate withholding filings, and dispute prevention with regulatory bodies.</p>
+      </div>
+      <div class="card-paper rounded-2xl p-7 reveal" style="transition-delay:.1s">
+        <div class="w-11 h-11 rounded-full border-2 border-brass flex items-center justify-center text-brass mb-5"><i class="fa-solid fa-building-columns"></i></div>
+        <h3 class="font-serif font-semibold text-lg mb-2">Company Incorporation</h3>
+        <p class="text-sm text-ink-900/60 dark:text-paper/60 leading-relaxed">Private Limited and LLP registration, MSME certification, and Startup India registration.</p>
+      </div>
+      <div class="card-paper rounded-2xl p-7 reveal">
+        <div class="w-11 h-11 rounded-full border-2 border-moss flex items-center justify-center text-moss mb-5"><i class="fa-solid fa-scale-balanced"></i></div>
+        <h3 class="font-serif font-semibold text-lg mb-2">Bookkeeping & Payroll</h3>
+        <p class="text-sm text-ink-900/60 dark:text-paper/60 leading-relaxed">Ledger management, payroll processing, and complete financial statement preparation.</p>
+      </div>
+      <div class="card-paper rounded-2xl p-7 reveal" style="transition-delay:.05s">
+        <div class="w-11 h-11 rounded-full border-2 border-brass flex items-center justify-center text-brass mb-5"><i class="fa-solid fa-stamp"></i></div>
+        <h3 class="font-serif font-semibold text-lg mb-2">Statutory Audits & ROC</h3>
+        <p class="text-sm text-ink-900/60 dark:text-paper/60 leading-relaxed">Independent audits, annual ROC compliance returns, and governance checks.</p>
+      </div>
+      <div class="card-paper rounded-2xl p-7 reveal" style="transition-delay:.1s">
+        <div class="w-11 h-11 rounded-full border-2 border-moss flex items-center justify-center text-moss mb-5"><i class="fa-solid fa-folder-open"></i></div>
+        <h3 class="font-serif font-semibold text-lg mb-2">Project Reports & Advisory</h3>
+        <p class="text-sm text-ink-900/60 dark:text-paper/60 leading-relaxed">Capital projections, bank funding feasibility, and business valuation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATORS -->
+<section id="calculators" class="py-24 px-4 lg:px-10 border-t rule bg-paper-2/60 dark:bg-ink-800/40">
+  <div class="max-w-6xl mx-auto">
+    <div class="max-w-2xl mb-16 reveal">
+      <span class="text-[11px] font-bold tracking-[0.2em] uppercase text-brass">Free Tools</span>
+      <h2 class="font-serif font-semibold text-3xl sm:text-4xl mt-3">Quick tax estimators</h2>
+      <p class="text-ink-900/60 dark:text-paper/60 mt-4 leading-relaxed">Estimate your income tax, GST liability, or pull up the documents you'll need — instantly.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div class="lg:col-span-7 card-paper rounded-2xl p-8 space-y-7 reveal">
+        <div class="flex items-center justify-between border-b rule pb-4">
+          <h3 class="font-serif font-semibold text-lg flex items-center gap-3"><i class="fa-solid fa-calculator text-brass"></i> Tax & GST Calculator</h3>
+          <span class="text-[9px] num tracking-widest text-ink-900/40 dark:text-paper/40">ESTIMATE ONLY</span>
+        </div>
+
+        <div class="space-y-5">
+          <div>
+            <label class="block text-[10px] font-bold uppercase tracking-widest text-ink-900/50 dark:text-paper/50 mb-2">Annual Gross Revenue (INR)</label>
+            <div class="relative">
+              <span class="absolute left-4 top-1/2 -translate-y-1/2 text-brass font-bold">₹</span>
+              <input id="calc-inflow" type="number" placeholder="e.g. 2500000" class="num w-full bg-paper dark:bg-ink-900 border rule rounded-xl pl-10 pr-4 py-3.5 focus:outline-none focus:border-brass transition-colors">
             </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-[10px] font-bold uppercase tracking-widest text-ink-900/50 dark:text-paper/50 mb-2">Entity Type</label>
+              <select id="calc-category" class="w-full bg-paper dark:bg-ink-900 border rule rounded-xl px-4 py-3.5 focus:outline-none focus:border-brass transition-colors text-sm">
+                <option value="ind">Individual Proprietor</option>
+                <option value="corp">Pvt Ltd / Public Co.</option>
+                <option value="llp">LLP / Partnership</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold uppercase tracking-widest text-ink-900/50 dark:text-paper/50 mb-2">GST Bracket</label>
+              <select id="calc-gst-percent" class="w-full bg-paper dark:bg-ink-900 border rule rounded-xl px-4 py-3.5 focus:outline-none focus:border-brass transition-colors text-sm">
+                <option value="0">No GST Liability</option>
+                <option value="18" selected>18% Standard</option>
+                <option value="12">12% Secondary</option>
+                <option value="5">5% Essential</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div id="metric-out-block" class="hidden rounded-xl bg-paper-2 dark:bg-ink-900 border rule p-6 space-y-4">
+          <div class="flex items-center justify-between border-b rule pb-2">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-ink-900/50 dark:text-paper/50">Your Estimate</span>
+            <span class="text-[9px] text-moss bg-moss/10 px-2 py-0.5 rounded-full font-bold">READY</span>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <span class="text-[9px] uppercase text-ink-900/50 dark:text-paper/50 block">Direct Tax Liability</span>
+              <span id="out-direct" class="num font-semibold text-xl text-brass">₹0</span>
+            </div>
+            <div>
+              <span class="text-[9px] uppercase text-ink-900/50 dark:text-paper/50 block">Indirect GST Pool</span>
+              <span id="out-gst" class="num font-semibold text-xl text-brass">₹0</span>
+            </div>
+          </div>
+          <p class="text-[10px] text-ink-900/40 dark:text-paper/40 italic">*Estimates only, based on current-year assumptions. Final figures require a full review.</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <button id="compute-btn" class="flex-1 py-3.5 bg-ink-900 dark:bg-brass text-paper dark:text-ink-900 font-bold text-xs tracking-widest uppercase rounded-xl hover:bg-brass dark:hover:bg-brass-light transition-colors">Calculate Estimate</button>
+          <button id="ai-strategy-btn" class="flex-1 py-3.5 border-2 border-moss text-moss font-bold text-xs tracking-widest uppercase rounded-xl hover:bg-moss hover:text-paper transition-colors flex items-center justify-center gap-2">
+            <i class="fa-solid fa-sparkles"></i> AI Strategy Suggestions
+          </button>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 card-paper rounded-2xl p-8 flex flex-col justify-between space-y-6 reveal" style="transition-delay:.08s">
+        <div>
+          <h3 class="font-serif font-semibold text-lg flex items-center gap-3 border-b rule pb-4 mb-5"><i class="fa-solid fa-list-check text-brass"></i> Document Checklist</h3>
+          <p class="text-xs text-ink-900/60 dark:text-paper/60 leading-relaxed mb-5">Choose a category to see what you'll need to prepare.</p>
+          <select id="checklist-category-selector" class="w-full bg-paper dark:bg-ink-900 border rule rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-brass mb-6 transition-colors">
+            <option value="pvt">Pvt Ltd Registration</option>
+            <option value="gst">GST Ongoing Filing</option>
+            <option value="it">Income Tax Audits</option>
+            <option value="tm">Trademark Filing</option>
+          </select>
+          <ul id="checklist-holder" class="space-y-3 text-xs font-light overflow-y-auto max-h-[180px]"></ul>
+        </div>
+        <div class="border-t rule pt-4">
+          <p class="text-[10px] text-ink-900/40 dark:text-paper/40 italic">Select a category above to update the checklist.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="ai-strategy-container" class="hidden mt-8 card-paper rounded-2xl p-8 border-2 border-moss/30 space-y-6">
+      <div class="flex items-center justify-between border-b rule pb-4">
+        <h4 class="font-serif font-semibold text-lg flex items-center gap-2"><i class="fa-solid fa-sparkles text-brass"></i> AI Tax Strategy Suggestions</h4>
+        <span class="text-[9px] num tracking-widest text-moss uppercase font-bold">Verify with [Founder Name]</span>
+      </div>
+      <div id="ai-strategy-content" class="text-sm leading-relaxed whitespace-pre-line text-ink-900/80 dark:text-paper/80"></div>
+      <div class="flex justify-end pt-4 border-t rule">
+        <button onclick="document.getElementById('ai-strategy-container').classList.add('hidden')" class="px-5 py-2.5 border rule rounded-xl text-xs font-semibold hover:border-brass hover:text-brass transition-colors">Dismiss</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-24 px-4 lg:px-10 border-t rule">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-14 items-center">
+
+    <div class="lg:col-span-5 flex justify-center reveal">
+      <div class="relative w-72 h-96">
+        <div class="absolute -top-3 -left-3 w-10 h-10 border-t-2 border-l-2 border-brass"></div>
+        <div class="absolute -bottom-3 -right-3 w-10 h-10 border-b-2 border-r-2 border-brass"></div>
+        <div class="w-full h-full rounded-sm border rule bg-paper-2 dark:bg-ink-800 flex items-center justify-center overflow-hidden">
+          <!-- Replace with an actual photo of the founder -->
+          <i class="fa-solid fa-user text-8xl text-ink-900/10 dark:text-paper/10"></i>
+        </div>
+        <div class="absolute bottom-5 left-5 right-5 card-paper rounded-xl p-4">
+          <span class="text-[9px] text-brass font-bold tracking-[0.2em] uppercase block mb-1">Founder</span>
+          <h4 class="font-serif font-semibold text-xl">[Founder Name]</h4>
+          <p class="text-xs text-ink-900/50 dark:text-paper/50 mt-1">[Qualification — e.g. Chartered Accountant] &#183; [X]+ Years</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-7 space-y-7 reveal" style="transition-delay:.08s">
+      <span class="text-[11px] font-bold tracking-[0.2em] uppercase text-brass">Why Clients Trust Us</span>
+      <h2 class="font-serif font-semibold text-3xl sm:text-4xl leading-tight">Meet the team behind your filings.</h2>
+
+      <p class="text-ink-900/70 dark:text-paper/70 leading-relaxed">
+        [Add a short paragraph about the founder's background: qualifications, career history, and what led to founding the firm. Aim for 3–4 sentences that build credibility without jargon.]
+      </p>
+      <p class="text-ink-900/70 dark:text-paper/70 leading-relaxed">
+        [Add a paragraph about the firm's philosophy — what makes your approach different, and the industries or business sizes you specialize in serving.]
+      </p>
+
+      <div class="flex flex-wrap gap-3">
+        <span class="inline-flex items-center gap-2 border rule text-xs font-semibold px-3.5 py-2 rounded-full"><i class="fa-solid fa-certificate text-brass"></i> ICAI Membership No. [XXXXXX]</span>
+        <span class="inline-flex items-center gap-2 border rule text-xs font-semibold px-3.5 py-2 rounded-full"><i class="fa-solid fa-building-shield text-moss"></i> Firm Registration No. [XXXXXX]</span>
+        <span class="inline-flex items-center gap-2 border rule text-xs font-semibold px-3.5 py-2 rounded-full"><i class="fa-solid fa-receipt text-brass"></i> GSTIN [XXXXXXXXXXXXXXX]</span>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-6 border-t rule">
+        <div class="flex gap-4">
+          <div class="w-10 h-10 rounded-full border-2 border-brass flex items-center justify-center text-brass flex-shrink-0"><i class="fa-solid fa-stamp"></i></div>
+          <div>
+            <h4 class="font-serif font-semibold text-sm">Careful, accurate filings</h4>
+            <p class="text-xs text-ink-900/50 dark:text-paper/50 mt-1">Every return is cross-checked before it's submitted.</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <div class="w-10 h-10 rounded-full border-2 border-moss flex items-center justify-center text-moss flex-shrink-0"><i class="fa-solid fa-clock-rotate-left"></i></div>
+          <div>
+            <h4 class="font-serif font-semibold text-sm">Fast turnarounds</h4>
+            <p class="text-xs text-ink-900/50 dark:text-paper/50 mt-1">Registrations and filings handled promptly, tracked end to end.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-24 px-4 lg:px-10 border-t rule bg-paper-2/60 dark:bg-ink-800/40">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-14 reveal">
+      <span class="text-[11px] font-bold tracking-[0.2em] uppercase text-brass">FAQ</span>
+      <h2 class="font-serif font-semibold text-3xl sm:text-4xl mt-3">Common questions</h2>
+      <p class="text-ink-900/60 dark:text-paper/60 mt-3">Quick answers on registration, GST, and how we work with clients.</p>
+    </div>
+
+    <div class="space-y-3 reveal">
+      <div class="card-paper rounded-xl overflow-hidden">
+        <button class="faq-btn w-full px-6 py-5 text-left flex items-center justify-between font-serif font-semibold text-sm sm:text-base">
+          <span>How quickly can you register a Private Limited Company?</span>
+          <i class="fa-solid fa-angle-down text-brass transition-transform duration-300"></i>
         </button>
-
-        <!-- Premium Glassmorphic Chat Window -->
-        <div id="chat-interface" class="hidden flex-col w-[320px] sm:w-[380px] h-[480px] premium-glass-card rounded-3xl overflow-hidden mt-3 shadow-2xl flex flex-col justify-between border border-brand-royalBlue/20">
-            
-            <!-- Window Header -->
-            <div class="bg-brand-royalBlue/10 border-b border-black/[0.04] dark:border-white/5 p-4 flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                    <div class="w-2.5 h-2.5 rounded-full bg-brand-emerald animate-ping"></div>
-                    <div>
-                        <h4 class="font-display font-bold text-xs text-brand-darkText dark:text-white uppercase tracking-wider">Vinayaga AI Concierge</h4>
-                        <span class="text-[9px] text-slate-400 uppercase font-semibold">Active Advisory Matrix</span>
-                    </div>
-                </div>
-                <div class="flex items-center gap-2 text-slate-400 text-xs">
-                    <button id="chat-minimize-btn" title="Minimize Chat" class="hover:text-white transition-colors"><i class="fa-solid fa-minus"></i></button>
-                    <button id="chat-close-btn" title="Close Chat" class="hover:text-white transition-colors ml-2"><i class="fa-solid fa-xmark"></i></button>
-                </div>
-            </div>
-
-            <!-- Messages Stream Node -->
-            <div id="chat-stream-box" class="flex-1 p-4 overflow-y-auto space-y-4 text-xs font-light">
-                
-                <!-- Initial Welcome Bubble -->
-                <div class="flex items-start gap-3">
-                    <div class="w-8 h-8 rounded-full bg-brand-royalBlue/10 flex items-center justify-center text-brand-royalBlue flex-shrink-0 text-xs">
-                        <i class="fa-solid fa-brain-circuit"></i>
-                    </div>
-                    <div class="bg-black/[0.02] dark:bg-white/5 border border-black/5 dark:border-white/5 p-3 rounded-2xl rounded-tl-none max-w-[80%] text-brand-darkText dark:text-slate-300">
-                        Welcome to Vinayaga Associates. I am your premium tax and compliance concierge. How can I guide your corporate strategy today?
-                    </div>
-                </div>
-
-                <!-- Suggestion Question Chips -->
-                <div class="flex flex-wrap gap-2 pt-2">
-                    <button onclick="sendQuickAction('How to register a Pvt Ltd?')" class="bg-brand-royalBlue/5 hover:bg-brand-royalBlue/15 border border-brand-royalBlue/20 text-brand-royalBlue dark:text-brand-accentBlue px-3 py-1.5 rounded-full text-[9px] font-bold transition-all text-left">Pvt Ltd Registration</button>
-                    <button onclick="sendQuickAction('Explain GST Audit assistance')" class="bg-brand-royalBlue/5 hover:bg-brand-royalBlue/15 border border-brand-royalBlue/20 text-brand-royalBlue dark:text-brand-accentBlue px-3 py-1.5 rounded-full text-[9px] font-bold transition-all text-left">GST Audit Help</button>
-                    <button onclick="sendQuickAction('What is MSME Registration?')" class="bg-brand-royalBlue/5 hover:bg-brand-royalBlue/15 border border-brand-royalBlue/20 text-brand-royalBlue dark:text-brand-accentBlue px-3 py-1.5 rounded-full text-[9px] font-bold transition-all text-left">MSME Benefits</button>
-                    <button onclick="sendQuickAction('Connect with Vignesh')" class="bg-brand-royalBlue/5 hover:bg-brand-royalBlue/15 border border-brand-royalBlue/20 text-brand-royalBlue dark:text-brand-accentBlue px-3 py-1.5 rounded-full text-[9px] font-bold transition-all text-left">Talk to Expert</button>
-                </div>
-
-            </div>
-
-            <!-- Lead Capture Modal Overlay Inside Chat Interface -->
-            <div id="lead-capture-modal" class="hidden absolute inset-0 bg-brand-navy/90 backdrop-blur-md flex flex-col justify-center p-6 space-y-4 z-40">
-                <div class="text-center">
-                    <i class="fa-solid fa-user-shield text-3xl text-brand-emerald mb-2"></i>
-                    <h5 class="font-display font-bold text-sm text-white">Direct Advisory Verification</h5>
-                    <p class="text-[10px] text-slate-300 font-light mt-1">Provide your details to initiate direct handoff to Vignesh.</p>
-                </div>
-                <div class="space-y-3">
-                    <input id="lead-name" type="text" placeholder="Representative Name" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-emerald">
-                    <input id="lead-email" type="email" placeholder="Business Email" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-emerald">
-                    <input id="lead-phone" type="tel" placeholder="Phone Coordinate" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-brand-emerald">
-                </div>
-                <div class="flex gap-2">
-                    <button onclick="cancelLeadCapture()" class="w-1/2 py-2.5 bg-white/5 border border-white/10 rounded-xl text-[10px] font-bold uppercase tracking-wider text-white">Cancel</button>
-                    <button onclick="submitLeadCapture()" class="w-1/2 py-2.5 bg-brand-emerald text-brand-navy rounded-xl text-[10px] font-bold uppercase tracking-wider">Connect Now</button>
-                </div>
-            </div>
-
-            <!-- Input Controls Base Row -->
-            <div class="border-t border-black/[0.04] dark:border-white/5 p-3 bg-white/50 dark:bg-brand-navy/60 flex items-center gap-2">
-                <input id="chat-text-input" type="text" placeholder="Write compliance query..." class="flex-1 bg-black/[0.02] dark:bg-brand-navy/60 border border-black/10 dark:border-white/10 rounded-xl px-4 py-3 text-xs text-brand-darkText dark:text-white focus:outline-none focus:border-brand-royalBlue">
-                <button id="send-chat-msg-btn" class="w-10 h-10 rounded-xl bg-brand-royalBlue hover:bg-blue-700 text-white flex items-center justify-center shadow-md focus:outline-none">
-                    <i class="fa-solid fa-paper-plane text-xs"></i>
-                </button>
-            </div>
-
+        <div class="faq-desc hidden px-6 pb-5 text-sm text-ink-900/60 dark:text-paper/60 leading-relaxed">
+          With clean KYC details, PAN/Aadhaar cards, and address proof, we typically register entities under MCA SPICe+ in 5–7 business days.
         </div>
+      </div>
+      <div class="card-paper rounded-xl overflow-hidden">
+        <button class="faq-btn w-full px-6 py-5 text-left flex items-center justify-between font-serif font-semibold text-sm sm:text-base">
+          <span>Can you help recover missed GST input credits?</span>
+          <i class="fa-solid fa-angle-down text-brass transition-transform duration-300"></i>
+        </button>
+        <div class="faq-desc hidden px-6 pb-5 text-sm text-ink-900/60 dark:text-paper/60 leading-relaxed">
+          Yes. We cross-check your purchases (Form GSTR-2B) against your sales claims (Form GSTR-1) to identify and recover missed input tax credits.
+        </div>
+      </div>
+      <div class="card-paper rounded-xl overflow-hidden">
+        <button class="faq-btn w-full px-6 py-5 text-left flex items-center justify-between font-serif font-semibold text-sm sm:text-base">
+          <span>How do you handle tax department notices?</span>
+          <i class="fa-solid fa-angle-down text-brass transition-transform duration-300"></i>
+        </button>
+        <div class="faq-desc hidden px-6 pb-5 text-sm text-ink-900/60 dark:text-paper/60 leading-relaxed">
+          We review the notice, gather the relevant documents, prepare a formal response, and represent you before tax officers directly.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING / CONTACT -->
+<section id="booking" class="py-24 px-4 lg:px-10 border-t rule">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+    <div class="lg:col-span-5 space-y-8 reveal">
+      <div>
+        <span class="text-[11px] font-bold tracking-[0.2em] uppercase text-brass">Contact</span>
+        <h2 class="font-serif font-semibold text-3xl sm:text-4xl mt-3">Book your session</h2>
+        <p class="text-ink-900/60 dark:text-paper/60 mt-4 text-sm leading-relaxed">Reach out directly or schedule an in-person advisory appointment.</p>
+      </div>
+
+      <div class="space-y-3">
+        <div class="flex items-center gap-4 p-4 rounded-xl card-paper">
+          <div class="w-10 h-10 rounded-full border-2 border-brass flex items-center justify-center text-brass flex-shrink-0"><i class="fa-solid fa-envelope-open-text"></i></div>
+          <div>
+            <span class="text-[9px] text-ink-900/40 dark:text-paper/40 block font-bold uppercase">Email</span>
+            <a href="mailto:[YOUR EMAIL ADDRESS]" class="text-xs font-semibold hover:text-brass">[YOUR EMAIL ADDRESS]</a>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 p-4 rounded-xl card-paper">
+          <div class="w-10 h-10 rounded-full border-2 border-moss flex items-center justify-center text-moss flex-shrink-0"><i class="fa-solid fa-headset"></i></div>
+          <div>
+            <span class="text-[9px] text-ink-900/40 dark:text-paper/40 block font-bold uppercase">Phone</span>
+            <a href="tel:[YOUR PHONE NUMBER]" class="text-xs font-semibold hover:text-brass">[YOUR PHONE NUMBER]</a>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 p-4 rounded-xl card-paper">
+          <div class="w-10 h-10 rounded-full border-2 border-brass flex items-center justify-center text-brass flex-shrink-0"><i class="fa-brands fa-whatsapp"></i></div>
+          <div>
+            <span class="text-[9px] text-ink-900/40 dark:text-paper/40 block font-bold uppercase">WhatsApp</span>
+            <a href="https://wa.me/[YOUR WHATSAPP NUMBER, e.g. 919876543210]" target="_blank" rel="noopener" class="text-xs font-semibold hover:text-brass">Chat with us</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-xl border rule overflow-hidden h-40 relative">
+        <div class="absolute inset-0 bg-ink-900 flex flex-col items-center justify-center p-6 text-center">
+          <i class="fa-solid fa-location-dot text-2xl text-brass mb-2"></i>
+          <h4 class="font-serif font-semibold text-sm text-paper">[Your Firm Name]</h4>
+          <p class="text-[11px] text-paper/60 mt-1">[Your Office Address], Chennai, Tamil Nadu, India</p>
+        </div>
+      </div>
     </div>
 
-    <!-- MAIN SYSTEM ARCHITECTURE SCRIPTS -->
-    <script>
-        // Setup Checklist Data Map
-        const documentChecklists = {
-            'pvt': [
-                'KYC of all Board Directors (PAN, Aadhaar, Passport)',
-                'Business Registered Address proof (Latest electricity bill)',
-                'Landlord No Objection Certificate (NOC) copy',
-                'Director Digital Signature Certificate (DSC) tokens',
-                'Company MoA and AoA draft agreements'
-            ],
-            'gst': [
-                'Monthly purchase invoice ledger statements',
-                'Outward sales transaction registers (GSTR-1 data)',
-                'Form GSTR-2B credit mapping ledger',
-                'E-Way bills registers (inter-state logs)',
-                'TDS/TCS withholding credits ledger'
-            ],
-            'it': [
-                'Signed Balance Sheet & Trading Profit/Loss records',
-                'Statutory Auditor notes & corporate audit file',
-                'TAN registration certificate & TDS filings ledger',
-                'Consolidated Tax Credit Statements (Form 26AS)',
-                'Self-assessment tax challan vouchers'
-            ],
-            'tm': [
-                'High-res vector logo file in SVG/PNG format',
-                'Signed Trademark Power of Attorney (Form TM-48)',
-                'Explicit class description under dynamic NIC guidelines',
-                'User Affidavit stating initial first usage timeframe',
-                'Company Incorporation papers if registered'
-            ]
-        };
+    <div class="lg:col-span-7 card-paper rounded-2xl p-8 space-y-6 reveal" style="transition-delay:.08s">
+      <div class="border-b rule pb-4">
+        <h3 class="font-serif font-semibold text-xl">Schedule a Consultation</h3>
+        <p class="text-xs text-ink-900/50 dark:text-paper/50 mt-1">Tell us what you need — we'll get back to you within one business day.</p>
+      </div>
 
-        // GEMINI API UTILITY AND RECONSTRUCTION PIPELINE
-        const apiKey = ""; // Managed at runtime by preview host environment
-        const modelName = "gemini-3-flash-preview";
-        const geminiEndpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+      <form id="booking-portal-form" class="space-y-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[10px] font-bold uppercase tracking-widest text-ink-900/50 dark:text-paper/50 mb-2">Full Name</label>
+            <input id="book-name" type="text" required placeholder="e.g., Priya Raman" class="w-full bg-paper dark:bg-ink-900 border rule rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brass transition-colors">
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold uppercase tracking-widest text-ink-900/50 dark:text-paper/50 mb-2">Email</label>
+            <input id="book-email" type="email" required placeholder="e.g., priya@company.com" class="w-full bg-paper dark:bg-ink-900 border rule rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brass transition-colors">
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[10px] font-bold uppercase tracking-widest text-ink-900/50 dark:text-paper/50 mb-2">Phone</label>
+            <input id="book-phone" type="tel" required placeholder="e.g., +91 98765 43210" class="w-full bg-paper dark:bg-ink-900 border rule rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brass transition-colors">
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold uppercase tracking-widest text-ink-900/50 dark:text-paper/50 mb-2">Service Needed</label>
+            <select id="book-service" class="w-full bg-paper dark:bg-ink-900 border rule rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brass transition-colors">
+              <option value="GST Services">GST Audit & Filing</option>
+              <option value="Income Tax">Income Tax & Statutory Audits</option>
+              <option value="Company Registration">Business Setup & Incorporation</option>
+              <option value="Trademark & MSME">Trademark / MSME Certification</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-[10px] font-bold uppercase tracking-widest text-ink-900/50 dark:text-paper/50 mb-2">Notes</label>
+          <textarea id="book-msg" rows="3" placeholder="Tell us a bit about what you need..." class="w-full bg-paper dark:bg-ink-900 border rule rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-brass transition-colors"></textarea>
+        </div>
 
-        // System Instruction defining AI Concierge identity
-        const systemPromptChat = `You are the Vinayaga Associates AI Tax Concierge, an elite virtual tax assistant trained in statutory Indian and global compliance frameworks.
-The firm was founded by Vignesh, an industry expert with 15+ years of institutional governance.
-Your goal is to answer queries professionally, trustworthily, and with high expertise.
-Recommend their core services:
-1. GST Strategy & Audits
-2. Corporate Income Tax & TDS
+        <div id="booking-success" class="hidden p-4 rounded-xl bg-moss/10 border border-moss/30 text-xs text-moss font-semibold">
+          <i class="fa-solid fa-circle-check mr-2"></i> Thanks! Your request has been sent. We'll be in touch shortly.
+        </div>
+
+        <button type="submit" class="w-full py-3.5 bg-ink-900 dark:bg-brass text-paper dark:text-ink-900 font-bold text-xs tracking-widest uppercase rounded-xl hover:bg-brass dark:hover:bg-brass-light transition-colors">Send Request</button>
+        <p class="text-center text-[10px] text-ink-900/40 dark:text-paper/40">Sends via WhatsApp — or <a href="mailto:[YOUR EMAIL ADDRESS]" class="underline hover:text-brass">email us directly</a>.</p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t rule py-14 px-4 lg:px-10">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-full border-2 border-brass flex items-center justify-center">
+        <span class="font-serif italic font-semibold text-brass text-xs">VA</span>
+      </div>
+      <div class="flex flex-col leading-none">
+        <span class="font-serif font-semibold text-sm">[Your Firm Name]</span>
+        <span class="text-[9px] text-brass tracking-wider uppercase mt-0.5">Tax & Compliance Advisory</span>
+      </div>
+    </div>
+    <div class="flex flex-wrap gap-6 text-xs text-ink-900/50 dark:text-paper/50">
+      <a href="#services" class="hover:text-brass transition-colors">Services</a>
+      <a href="#about" class="hover:text-brass transition-colors">About Us</a>
+      <a href="#calculators" class="hover:text-brass transition-colors">Calculators</a>
+      <a href="#booking" class="hover:text-brass transition-colors">Contact</a>
+    </div>
+    <div class="text-[10px] text-ink-900/40 dark:text-paper/40 text-center md:text-right">&copy; 2026 [Your Firm Name]. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- FLOATING UTILITIES -->
+<div class="fixed bottom-6 left-6 z-40 flex flex-col gap-3">
+  <a href="tel:[YOUR PHONE NUMBER]" class="w-12 h-12 rounded-full bg-ink-900 dark:bg-paper text-paper dark:text-ink-900 flex items-center justify-center text-lg shadow-lg hover:bg-brass dark:hover:bg-brass hover:text-paper transition-colors" title="Call Us">
+    <i class="fa-solid fa-phone"></i>
+  </a>
+  <a href="https://wa.me/[YOUR WHATSAPP NUMBER, e.g. 919876543210]" target="_blank" rel="noopener" class="w-12 h-12 rounded-full bg-moss text-paper flex items-center justify-center text-lg shadow-lg hover:bg-moss-light transition-colors" title="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+</div>
+
+<!-- AI CHAT CONCIERGE -->
+<div id="ai-chat-concierge" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+  <div id="chat-notification" class="absolute -top-1 -left-1 w-4 h-4 bg-brass text-[8px] font-bold text-ink-900 rounded-full flex items-center justify-center">1</div>
+
+  <button id="chat-trigger-orb" class="w-14 h-14 rounded-full bg-ink-900 dark:bg-brass text-paper dark:text-ink-900 flex items-center justify-center shadow-xl hover:bg-brass dark:hover:bg-brass-light transition-colors">
+    <i id="orb-icon" class="fa-solid fa-comment-dots text-xl"></i>
+  </button>
+
+  <div id="chat-interface" class="hidden flex-col w-[320px] sm:w-[380px] h-[480px] card-paper rounded-2xl overflow-hidden mt-3 shadow-2xl">
+    <div class="bg-paper-2 dark:bg-ink-800 border-b rule p-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-2 h-2 rounded-full bg-moss"></div>
+        <div>
+          <h4 class="font-serif font-semibold text-xs uppercase tracking-wider">[Your Firm Name] Concierge</h4>
+          <span class="text-[9px] text-ink-900/40 dark:text-paper/40 uppercase font-semibold">Online now</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 text-xs">
+        <button id="chat-minimize-btn" title="Minimize" class="hover:text-brass transition-colors"><i class="fa-solid fa-minus"></i></button>
+        <button id="chat-close-btn" title="Close" class="hover:text-brass transition-colors ml-2"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+
+    <div id="chat-stream-box" class="flex-1 p-4 overflow-y-auto space-y-4 text-xs" style="height: calc(100% - 130px);">
+      <div class="flex items-start gap-3">
+        <div class="w-7 h-7 rounded-full border border-brass flex items-center justify-center text-brass flex-shrink-0 text-xs"><i class="fa-solid fa-user-tie"></i></div>
+        <div class="bg-paper-2 dark:bg-ink-800 border rule p-3 rounded-2xl rounded-tl-none max-w-[80%]">
+          Welcome to [Your Firm Name]. I can help with GST, incorporation, and general tax questions. How can I assist you today?
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-2 pt-1">
+        <button onclick="sendQuickAction('How to register a Pvt Ltd?')" class="border border-brass/40 text-brass px-3 py-1.5 rounded-full text-[9px] font-bold hover:bg-brass/10 transition-colors">Pvt Ltd Registration</button>
+        <button onclick="sendQuickAction('Explain GST Audit assistance')" class="border border-brass/40 text-brass px-3 py-1.5 rounded-full text-[9px] font-bold hover:bg-brass/10 transition-colors">GST Audit Help</button>
+        <button onclick="sendQuickAction('What is MSME Registration?')" class="border border-brass/40 text-brass px-3 py-1.5 rounded-full text-[9px] font-bold hover:bg-brass/10 transition-colors">MSME Benefits</button>
+        <button onclick="sendQuickAction('Connect with an expert')" class="border border-brass/40 text-brass px-3 py-1.5 rounded-full text-[9px] font-bold hover:bg-brass/10 transition-colors">Talk to an Expert</button>
+      </div>
+    </div>
+
+    <div id="lead-capture-modal" class="hidden absolute inset-0 bg-ink-900/95 backdrop-blur-sm flex flex-col justify-center p-6 space-y-4 z-40">
+      <div class="text-center">
+        <i class="fa-solid fa-user-tie text-2xl text-brass mb-2"></i>
+        <h5 class="font-serif font-semibold text-sm text-paper">Let's Connect</h5>
+        <p class="text-[10px] text-paper/60 mt-1">Share your details and we'll reach out directly.</p>
+      </div>
+      <div class="space-y-3">
+        <input id="lead-name" type="text" placeholder="Your Name" class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-paper focus:outline-none focus:border-brass">
+        <input id="lead-email" type="email" placeholder="Your Email" class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-paper focus:outline-none focus:border-brass">
+        <input id="lead-phone" type="tel" placeholder="Your Phone Number" class="w-full bg-white/5 border border-white/15 rounded-xl px-4 py-2.5 text-xs text-paper focus:outline-none focus:border-brass">
+      </div>
+      <div class="flex gap-2">
+        <button onclick="cancelLeadCapture()" class="w-1/2 py-2.5 bg-white/5 border border-white/15 rounded-xl text-[10px] font-bold uppercase tracking-wider text-paper">Cancel</button>
+        <button onclick="submitLeadCapture()" class="w-1/2 py-2.5 bg-brass text-ink-900 rounded-xl text-[10px] font-bold uppercase tracking-wider">Connect Now</button>
+      </div>
+    </div>
+
+    <div class="border-t rule p-3 bg-paper-2 dark:bg-ink-800 flex items-center gap-2">
+      <input id="chat-text-input" type="text" placeholder="Ask a compliance question..." class="flex-1 bg-paper dark:bg-ink-900 border rule rounded-xl px-4 py-2.5 text-xs focus:outline-none focus:border-brass">
+      <button id="send-chat-msg-btn" class="w-9 h-9 rounded-xl bg-ink-900 dark:bg-brass text-paper dark:text-ink-900 flex items-center justify-center hover:bg-brass dark:hover:bg-brass-light transition-colors">
+        <i class="fa-solid fa-paper-plane text-xs"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Document checklist data
+  const documentChecklists = {
+    'pvt': ['KYC of all Board Directors (PAN, Aadhaar, Passport)', 'Business Registered Address proof (latest electricity bill)', 'Landlord No Objection Certificate (NOC)', "Director Digital Signature Certificate (DSC)", 'Company MoA and AoA drafts'],
+    'gst': ['Monthly purchase invoice ledger records', 'Outward sales transaction registers', 'Form GSTR-2B credit reconciliation', 'E-Way bills registers (inter-state)', 'TDS/TCS withholding credits ledger'],
+    'it': ['Signed Balance Sheet & Profit/Loss statements', 'Statutory Auditor notes & audit report', 'TAN registration records', 'Consolidated Tax Credit Statement (Form 26AS)', 'Self-assessment tax challan vouchers'],
+    'tm': ['High-res vector logo file (SVG/PNG)', 'Signed Trademark Power of Attorney (Form TM-48)', 'Class description under NIC standards', 'Affidavit of first usage timeframe', 'Company incorporation papers, if registered'],
+  };
+
+  // GEMINI API CONFIGURATION
+  // Paste your Gemini API key below to activate the AI concierge.
+  // Note: a key placed here is visible in this page's source. For production,
+  // route this through a small backend/serverless function instead.
+  const apiKey = "AQ.Ab8RN6IAvkUm4hYoJpzPabRW_vvrBdnRfjiLwkAS6wRBrF_-Hw";
+  const modelName = "gemini-2.5-flash-preview-09-2025";
+  const geminiEndpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${apiKey}`;
+
+  const systemPromptChat = `You are the [Your Firm Name] AI Tax Concierge, a virtual assistant trained on Indian statutory and compliance frameworks.
+Recommend the firm's core services when relevant:
+1. GST Strategy & Filings
+2. Income Tax & TDS
 3. Company Incorporation (Pvt Ltd, LLP, MSME, Startup India)
-4. Bookkeeping & Automated Payroll
+4. Bookkeeping & Payroll
 5. Statutory Audits & ROC Compliance
 6. Project Reports & Valuation
-Always act helpful, and guide complex questions toward setting up a direct consultation with Vignesh. 
-Keep answers clear, highly analytical, formatted cleanly using bullet points or bold markers.
-You have real-time access to the latest tax changes. Present answers with high structural authority.`;
+Be helpful and professional. Guide complex questions toward booking a direct consultation. Keep answers clear and concise, using bullet points where useful.`;
 
-        // Exponential Backoff Call Layer
-        async function queryGeminiAPI(prompt, systemInstruction, enableSearch = true) {
-            const payload = {
-                contents: [
-                    { parts: [{ text: prompt }] }
-                ],
-                systemInstruction: {
-                    parts: [{ text: systemInstruction }]
-                }
-            };
+  async function queryGeminiAPI(prompt, systemInstruction, enableSearch = true) {
+    if (!apiKey || apiKey === "PASTE_YOUR_GEMINI_API_KEY_HERE") {
+      throw new Error("AI concierge isn't set up yet — add a Gemini API key to enable it, or use WhatsApp/the booking form below.");
+    }
+    const payload = { contents: [{ parts: [{ text: prompt }] }], systemInstruction: { parts: [{ text: systemInstruction }] } };
+    if (enableSearch) payload.tools = [{ "google_search": {} }];
 
-            if (enableSearch) {
-                payload.tools = [{ "google_search": {} }];
-            }
-
-            const retries = 5;
-            let delay = 1000;
-
-            for (let i = 0; i < retries; i++) {
-                try {
-                    const response = await fetch(geminiEndpoint, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(payload)
-                    });
-
-                    if (response.ok) {
-                        const data = await response.json();
-                        const answerText = data.candidates?.[0]?.content?.parts?.[0]?.text;
-                        if (answerText) return answerText;
-                    }
-                } catch (err) {
-                    // Fail silently during retries
-                }
-                if (i < retries - 1) {
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                    delay *= 2; // exponential backing: 1s, 2s, 4s, 8s, 16s
-                }
-            }
-            throw new Error("Advisory Core service is temporarily unreachable. Please retry shortly.");
+    const retries = 3;
+    let delay = 1000;
+    for (let i = 0; i < retries; i++) {
+      try {
+        const response = await fetch(geminiEndpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+        if (response.ok) {
+          const data = await response.json();
+          const answerText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+          if (answerText) return answerText;
         }
-
-        // Window Load Bootstrapper
-        window.onload = function() {
-            // Dismiss Loading mask
-            document.getElementById('loader-screen').style.opacity = '0';
-            setTimeout(() => {
-                document.getElementById('loader-screen').style.display = 'none';
-            }, 700);
-
-            // Set default light/dark configuration
-            initThemePreferences();
-
-            // Bootstrap WebGL Canvas elements
-            init3DCanvas();
-
-            // Set up initial checklist UI state
-            renderDocChecklist('pvt');
-
-            // Setup programmatic event routing listeners
-            registerNavigationEventListeners();
-        };
-
-        // 1. LIGHT/DARK THEME STATE ARCHITECTURE
-        function initThemePreferences() {
-            const savedTheme = localStorage.getItem('theme');
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            
-            if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-                document.documentElement.classList.add('dark');
-                document.getElementById('theme-icon').className = 'fa-solid fa-sun text-brand-gold';
-            } else {
-                document.documentElement.classList.remove('dark');
-                document.getElementById('theme-icon').className = 'fa-solid fa-moon text-brand-darkText';
-            }
-        }
-
-        // 2. ADVANCED THREE.JS: Undulating Financial Landscape Wave
-        let scene, camera, renderer, waveMesh, geometry;
-        let mouseX = 0, mouseY = 0;
-        let targetX = 0, targetY = 0;
-
-        function init3DCanvas() {
-            const container = document.getElementById('canvas-3d-space');
-            if(!container) return;
-
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
-            camera.position.set(0, 45, 95);
-            camera.lookAt(0, 0, 0);
-
-            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            container.appendChild(renderer.domElement);
-
-            // Subtle lights to accentuate metallic vertices
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.45);
-            scene.add(ambientLight);
-
-            const directionalLight1 = new THREE.DirectionalLight(0x2563EB, 1.5);
-            directionalLight1.position.set(100, 100, 50);
-            scene.add(directionalLight1);
-
-            const directionalLight2 = new THREE.DirectionalLight(0x10B981, 0.8);
-            directionalLight2.position.set(-100, -100, 50);
-            scene.add(directionalLight2);
-
-            // Generate an undulating topographic plane (Not a boring globe)
-            const width = 280;
-            const height = 280;
-            const widthSegments = 45;
-            const heightSegments = 45;
-
-            geometry = new THREE.PlaneGeometry(width, height, widthSegments, heightSegments);
-            
-            // Refined wireframe mesh
-            const material = new THREE.MeshPhongMaterial({
-                color: 0x2563EB,
-                wireframe: true,
-                transparent: true,
-                opacity: 0.14,
-                shininess: 40,
-                side: THREE.DoubleSide
-            });
-
-            waveMesh = new THREE.Mesh(geometry, material);
-            waveMesh.rotation.x = -Math.PI / 2.2;
-            waveMesh.position.y = -10;
-            scene.add(waveMesh);
-
-            animateCanvas3D();
-
-            window.addEventListener('resize', () => {
-                camera.aspect = window.innerWidth / window.innerHeight;
-                camera.updateProjectionMatrix();
-                renderer.setSize(window.innerWidth, window.innerHeight);
-            });
-
-            window.addEventListener('mousemove', (e) => {
-                mouseX = (e.clientX - window.innerWidth / 2) * 0.04;
-                mouseY = (e.clientY - window.innerHeight / 2) * 0.04;
-            });
-        }
-
-        function animateCanvas3D() {
-            requestAnimationFrame(animateCanvas3D);
-            
-            // Interpolate mouse movement coordinates
-            targetX += (mouseX - targetX) * 0.05;
-            targetY += (mouseY - targetY) * 0.05;
-
-            // Animate wave vertices based on sin/cos waves + mouse coordinates
-            const time = Date.now() * 0.0012;
-            const positionAttribute = geometry.attributes.position;
-            const vertexCount = positionAttribute.count;
-
-            for (let i = 0; i < vertexCount; i++) {
-                const x = positionAttribute.getX(i);
-                const y = positionAttribute.getY(i);
-
-                // Math model rendering flowing topographic landscape heights
-                const z = Math.sin(x * 0.05 + time) * Math.cos(y * 0.05 + time) * 6
-                        + Math.sin(x * 0.02 + time * 0.5) * 4;
-
-                // Deform slightly when mouse hovers over sections
-                const distanceToMouse = Math.sqrt((x - targetX * 3) ** 2 + (y - targetY * 3) ** 2);
-                const mouseDeform = Math.max(0, (90 - distanceToMouse) * 0.15);
-
-                positionAttribute.setZ(i, z + mouseDeform);
-            }
-
-            geometry.computeVertexNormals();
-            positionAttribute.needsUpdate = true;
-
-            // Slow landscape rotation
-            waveMesh.rotation.z = time * 0.03;
-
-            renderer.render(scene, camera);
-        }
-
-        // 3. AMBIENT GLOW POSITION TRACKER
-        window.addEventListener('mousemove', (e) => {
-            const glow = document.getElementById('cursor-glow');
-            gsap.to(glow, {
-                x: e.clientX,
-                y: e.clientY,
-                duration: 0.6,
-                ease: 'power2.out'
-            });
-        });
-
-        // 4. INTERACTION SYSTEMS & EVENT ROUTING
-        function registerNavigationEventListeners() {
-            
-            // Theme toggle execution
-            const themeSwitchBtn = document.getElementById('theme-switch-btn');
-            themeSwitchBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const isDark = document.documentElement.classList.contains('dark');
-                if (isDark) {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('theme', 'light');
-                    document.getElementById('theme-icon').className = 'fa-solid fa-moon text-brand-darkText';
-                    if (waveMesh) waveMesh.material.color.setHex(0x2563EB);
-                } else {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('theme', 'dark');
-                    document.getElementById('theme-icon').className = 'fa-solid fa-sun text-brand-gold';
-                    if (waveMesh) waveMesh.material.color.setHex(0x3B82F6);
-                }
-            });
-
-            // Mobile Menu Toggle Button
-            const toggleBtn = document.getElementById('mobile-toggle-btn');
-            const mobileDrawer = document.getElementById('mobile-drawer');
-            const toggleIcon = document.getElementById('mobile-toggle-icon');
-
-            toggleBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                mobileDrawer.classList.toggle('hidden');
-                const isOpen = !mobileDrawer.classList.contains('hidden');
-                toggleIcon.className = isOpen ? "fa-solid fa-xmark text-lg text-brand-royalBlue" : "fa-solid fa-bars text-lg text-brand-royalBlue dark:text-white";
-            });
-
-            // Smooth scrolling navigation fallbacks
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        e.preventDefault();
-                        
-                        // Close mobile drawer if open
-                        mobileDrawer.classList.add('hidden');
-                        toggleIcon.className = "fa-solid fa-bars text-lg text-brand-royalBlue dark:text-white";
-
-                        const headerOffset = 90;
-                        const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: "smooth"
-                        });
-                    }
-                });
-            });
-
-            // Auto-close Drawer upon Selecting Mobile Link
-            document.querySelectorAll('.mobile-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileDrawer.classList.add('hidden');
-                    toggleIcon.className = "fa-solid fa-bars text-lg text-brand-royalBlue dark:text-white";
-                });
-            });
-
-            // Statutory Multi-bracket Tax Calculator Controller
-            const computeBtn = document.getElementById('compute-btn');
-            computeBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const inflow = parseFloat(document.getElementById('calc-inflow').value);
-                const category = document.getElementById('calc-category').value;
-                const gstRate = parseFloat(document.getElementById('calc-gst-percent').value);
-
-                if (isNaN(inflow) || inflow <= 0) {
-                    showDialogToast("Please input your corporate inflow to run calculations.");
-                    return;
-                }
-
-                // Simulate robust Tax bracket calculation structure
-                let computedTax = 0;
-                if (category === 'ind') {
-                    if (inflow > 1500000) computedTax = (inflow - 1500000) * 0.3 + 150000;
-                    else if (inflow > 1000000) computedTax = (inflow - 1000000) * 0.2 + 50000;
-                    else if (inflow > 500000) computedTax = (inflow - 500000) * 0.1;
-                } else {
-                    // Corporate flat rate computation
-                    computedTax = inflow * 0.25;
-                }
-
-                const computedGst = inflow * (gstRate / 100);
-
-                // Populate elements
-                document.getElementById('out-direct').innerText = '₹' + Math.round(computedTax).toLocaleString('en-IN');
-                document.getElementById('out-gst').innerText = '₹' + Math.round(computedGst).toLocaleString('en-IN');
-
-                const outBlock = document.getElementById('metric-out-block');
-                outBlock.classList.remove('hidden');
-                gsap.from(outBlock, { scale: 0.92, opacity: 0, duration: 0.4, ease: 'back.out(1.1)' });
-
-                // Render Canvas Ratio Chart
-                renderVisualChart(computedTax, computedGst);
-            });
-
-            // setup AI Strategic Planner execution layer
-            const aiStrategyBtn = document.getElementById('ai-strategy-btn');
-            aiStrategyBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                generateAIComplianceStrategyPlan();
-            });
-
-            // Setup Checklist Selector Change Listener
-            const checklistSelector = document.getElementById('checklist-category-selector');
-            checklistSelector.addEventListener('change', (e) => {
-                renderDocChecklist(e.target.value);
-            });
-
-            // FAQ Accordion Toggle Click Router
-            document.querySelectorAll('.faq-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const desc = btn.nextElementSibling;
-                    const icon = btn.querySelector('i');
-                    desc.classList.toggle('hidden');
-                    
-                    const isHidden = desc.classList.contains('hidden');
-                    icon.style.transform = isHidden ? "rotate(0deg)" : "rotate(180deg)";
-                });
-            });
-
-            // Static Booking Form Handler
-            const bookingPortalForm = document.getElementById('booking-portal-form');
-            bookingPortalForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const repName = document.getElementById('book-name').value;
-                const repEmail = document.getElementById('book-email').value;
-                const repPhone = document.getElementById('book-phone').value;
-                const repService = document.getElementById('book-service').value;
-
-                // Push custom submission record as active lead into admin grid view
-                injectAdminLeadsRows(repName, repService, repEmail);
-
-                // Update system conversion leads analytics
-                const curLeadsCount = parseInt(document.getElementById('metric-leads').innerText);
-                document.getElementById('metric-leads').innerText = curLeadsCount + 1;
-
-                document.getElementById('booking-success').classList.remove('hidden');
-                bookingPortalForm.reset();
-
-                setTimeout(() => {
-                    document.getElementById('booking-success').classList.add('hidden');
-                }, 8000);
-            });
-
-            // Floating Chat Concierge Open/Close Operations
-            const triggerOrb = document.getElementById('chat-trigger-orb');
-            const chatWindow = document.getElementById('chat-interface');
-            const notificationBadge = document.getElementById('chat-notification');
-
-            triggerOrb.addEventListener('click', (e) => {
-                e.preventDefault();
-                chatWindow.classList.toggle('hidden');
-                notificationBadge.classList.add('hidden'); // Clear alert badge upon opening
-
-                const isOpened = !chatWindow.classList.contains('hidden');
-                document.getElementById('orb-icon').className = isOpened ? "fa-solid fa-angle-down text-brand-emeraldDark" : "fa-solid fa-brain-circuit text-brand-emeraldDark";
-            });
-
-            // Minimizing or Closing Buttons inside Chat Header
-            document.getElementById('chat-minimize-btn').addEventListener('click', (e) => {
-                e.preventDefault();
-                chatWindow.classList.add('hidden');
-                document.getElementById('orb-icon').className = "fa-solid fa-brain-circuit text-brand-emeraldDark";
-            });
-
-            document.getElementById('chat-close-btn').addEventListener('click', (e) => {
-                e.preventDefault();
-                chatWindow.classList.add('hidden');
-                document.getElementById('orb-icon').className = "fa-solid fa-brain-circuit text-brand-emeraldDark";
-            });
-
-            // Send Button inside chatbot
-            document.getElementById('send-chat-msg-btn').addEventListener('click', (e) => {
-                e.preventDefault();
-                processManualChatInput();
-            });
-            document.getElementById('chat-text-input').addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    processManualChatInput();
-                }
-            });
-        }
-
-        // Render 2D allocation breakdown pie chart on Canvas
-        function renderVisualChart(taxValue, gstValue) {
-            const canvas = document.getElementById('chart-canvas');
-            if(!canvas) return;
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            const total = taxValue + gstValue;
-            if(total === 0) return;
-
-            const taxAngle = (taxValue / total) * Math.PI * 2;
-            const gstAngle = (gstValue / total) * Math.PI * 2;
-
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            const radius = 55;
-
-            // Draw Tax Segment
-            ctx.beginPath();
-            ctx.moveTo(centerX, centerY);
-            ctx.arc(centerX, centerY, radius, 0, taxAngle);
-            ctx.closePath();
-            ctx.fillStyle = '#2563EB'; // Royal Blue
-            ctx.fill();
-
-            // Draw GST Segment
-            ctx.beginPath();
-            ctx.moveTo(centerX, centerY);
-            ctx.arc(centerX, centerY, radius, taxAngle, taxAngle + gstAngle);
-            ctx.closePath();
-            ctx.fillStyle = '#10B981'; // Emerald
-            ctx.fill();
-
-            // Core center cutout for premium donut visual style
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, 32, 0, Math.PI * 2);
-            ctx.fillStyle = document.documentElement.classList.contains('dark') ? '#0F1524' : '#FFFFFF';
-            ctx.fill();
-        }
-
-        // Checklist renderer
-        function renderDocChecklist(key) {
-            const list = documentChecklists[key] || [];
-            const holder = document.getElementById('checklist-holder');
-            holder.innerHTML = "";
-
-            list.forEach(item => {
-                const li = document.createElement('li');
-                li.className = "flex items-start gap-2 py-1 border-b border-black/[0.02] dark:border-white/5 last:border-0 animate-fade-in";
-                li.innerHTML = `<i class="fa-regular fa-square-check text-brand-emerald dark:text-brand-emeraldDark mt-1 flex-shrink-0"></i> <span>${item}</span>`;
-                holder.appendChild(li);
-            });
-        }
-
-        // Custom micro-toast system
-        function showDialogToast(msg) {
-            const container = document.createElement('div');
-            container.className = "fixed top-24 left-1/2 -translate-x-1/2 z-50 px-6 py-4 rounded-2xl bg-white dark:bg-brand-cardDark border border-brand-royalBlue text-xs text-brand-darkText dark:text-white shadow-2xl flex items-center gap-3 animate-fade-in";
-            container.innerHTML = `<i class="fa-solid fa-circle-info text-brand-royalBlue"></i> <span>${msg}</span>`;
-            document.body.appendChild(container);
-            setTimeout(() => {
-                container.remove();
-            }, 3500);
-        }
-
-        // 5. LIVE GEMINI CHATBOT COGNITIVE RESPONSE STREAM
-        function sendQuickAction(query) {
-            appendChatMsg(query, 'user');
-            processAIResponseStream(query);
-        }
-
-        function processManualChatInput() {
-            const input = document.getElementById('chat-text-input');
-            const text = input.value.trim();
-            if (!text) return;
-
-            appendChatMsg(text, 'user');
-            input.value = "";
-
-            processAIResponseStream(text);
-        }
-
-        function appendChatMsg(text, role) {
-            const box = document.getElementById('chat-stream-box');
-            const wrapper = document.createElement('div');
-            wrapper.className = role === 'user' ? "flex justify-end animate-fade-in" : "flex items-start gap-3 animate-fade-in";
-
-            if (role === 'user') {
-                wrapper.innerHTML = `
-                    <div class="bg-brand-royalBlue text-white p-3 rounded-2xl rounded-tr-none max-w-[80%]">
-                        ${text}
-                    </div>
-                `;
-            } else {
-                wrapper.innerHTML = `
-                    <div class="w-8 h-8 rounded-full bg-brand-royalBlue/10 flex items-center justify-center text-brand-royalBlue flex-shrink-0 text-xs">
-                        <i class="fa-solid fa-brain-circuit"></i>
-                    </div>
-                    <div class="bg-black/[0.02] dark:bg-white/5 border border-black/5 dark:border-white/5 p-3 rounded-2xl rounded-tl-none max-w-[80%] text-brand-darkText dark:text-slate-300">
-                        ${text}
-                    </div>
-                `;
-            }
-
-            box.appendChild(wrapper);
-            box.scrollTop = box.scrollHeight;
-
-            // Increment Total Conversations metric in Admin Dashboard
-            const currentCount = parseInt(document.getElementById('metric-conversations').innerText);
-            document.getElementById('metric-conversations').innerText = currentCount + 1;
-        }
-
-        async function processAIResponseStream(query) {
-            const stream = document.getElementById('chat-stream-box');
-            
-            // Create animated typing bubble
-            const typingBubble = document.createElement('div');
-            typingBubble.id = "chat-typing-bubble";
-            typingBubble.className = "flex items-start gap-3";
-            typingBubble.innerHTML = `
-                <div class="w-8 h-8 rounded-full bg-brand-royalBlue/10 flex items-center justify-center text-brand-royalBlue flex-shrink-0 text-xs animate-spin">
-                    <i class="fa-solid fa-spinner"></i>
-                </div>
-                <div class="bg-black/[0.02] dark:bg-white/5 border border-black/5 dark:border-white/5 p-3 rounded-2xl rounded-tl-none text-brand-slate text-[10px] tracking-wide italic">
-                    AI Concierge analyzing regulatory databases...
-                </div>
-            `;
-            stream.appendChild(typingBubble);
-            stream.scrollTop = stream.scrollHeight;
-
-            try {
-                // Call Gemini API utilizing custom prompt instruction & real-time search grounding tool
-                const aiResult = await queryGeminiAPI(query, systemPromptChat, true);
-                
-                // Clear loading/typing bubble safely
-                const bubbleElement = document.getElementById('chat-typing-bubble');
-                if (bubbleElement) bubbleElement.remove();
-
-                appendChatMsg(aiResult, 'assistant');
-
-                // If user specifies connection, open the lead modal
-                const lowerQ = query.toLowerCase();
-                if (lowerQ.includes('vignesh') || lowerQ.includes('expert') || lowerQ.includes('connect') || lowerQ.includes('talk')) {
-                    setTimeout(() => {
-                        document.getElementById('lead-capture-modal').classList.remove('hidden');
-                    }, 1200);
-                }
-
-            } catch (err) {
-                const bubbleElement = document.getElementById('chat-typing-bubble');
-                if (bubbleElement) bubbleElement.remove();
-                appendChatMsg(`System Notification: ${err.message}`, 'assistant');
-            }
-        }
-
-        // 6. GEMINI LIVE STRATEGY ROADMAP COMPILER
-        async function generateAIComplianceStrategyPlan() {
-            const inflow = parseFloat(document.getElementById('calc-inflow').value);
-            const category = document.getElementById('calc-category').value;
-            const gstRate = parseFloat(document.getElementById('calc-gst-percent').value);
-
-            if (isNaN(inflow) || inflow <= 0) {
-                showDialogToast("Please input real gross corporate inflow first.");
-                return;
-            }
-
-            const strategyContainer = document.getElementById('ai-strategy-container');
-            const strategyContent = document.getElementById('ai-strategy-content');
-
-            strategyContainer.classList.remove('hidden');
-            strategyContent.innerHTML = `<div class="flex items-center gap-3"><i class="fa-solid fa-spinner animate-spin text-brand-emerald"></i> <span>Compiling tax mitigation plan and statutory roadmap using current finance amendments...</span></div>`;
-            
-            // Scroll dynamically to generated strategy container
-            const targetElement = document.querySelector("#ai-strategy-container");
-            if (targetElement) {
-                const headerOffset = 90;
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
-            }
-
-            const categoryName = category === 'ind' ? 'Individual / Proprietorship' : (category === 'corp' ? 'Corporate Private Limited' : 'LLP Partnership');
-            const customPrompt = `Generate a customized premium tax mitigation strategy and compliance roadmap for an Indian business with:
+      } catch (err) { /* retry */ }
+      if (i < retries - 1) { await new Promise(r => setTimeout(r, delay)); delay *= 2; }
+    }
+    throw new Error("The AI concierge is temporarily unreachable. Please try again shortly.");
+  }
+
+  function sendQuickAction(query) { appendChatMsg(query, 'user'); processAIResponseStream(query); }
+
+  function processManualChatInput() {
+    const input = document.getElementById('chat-text-input');
+    const text = input.value.trim();
+    if (!text) return;
+    appendChatMsg(text, 'user');
+    input.value = "";
+    processAIResponseStream(text);
+  }
+
+  function appendChatMsg(text, role) {
+    const box = document.getElementById('chat-stream-box');
+    const wrapper = document.createElement('div');
+    wrapper.className = role === 'user' ? "flex justify-end" : "flex items-start gap-3";
+    if (role === 'user') {
+      wrapper.innerHTML = `<div class="bg-ink-900 dark:bg-brass text-paper dark:text-ink-900 p-3 rounded-2xl rounded-tr-none max-w-[80%]">${text}</div>`;
+    } else {
+      wrapper.innerHTML = `<div class="w-7 h-7 rounded-full border border-brass flex items-center justify-center text-brass flex-shrink-0 text-xs"><i class="fa-solid fa-user-tie"></i></div>
+        <div class="bg-paper-2 dark:bg-ink-800 border rule p-3 rounded-2xl rounded-tl-none max-w-[80%]">${text}</div>`;
+    }
+    box.appendChild(wrapper);
+    box.scrollTop = box.scrollHeight;
+  }
+
+  async function processAIResponseStream(query) {
+    const stream = document.getElementById('chat-stream-box');
+    const typingBubble = document.createElement('div');
+    typingBubble.id = "chat-typing-bubble";
+    typingBubble.className = "flex items-start gap-3";
+    typingBubble.innerHTML = `<div class="w-7 h-7 rounded-full border border-brass flex items-center justify-center text-brass flex-shrink-0 text-xs animate-spin"><i class="fa-solid fa-spinner"></i></div>
+      <div class="bg-paper-2 dark:bg-ink-800 border rule p-3 rounded-2xl rounded-tl-none text-[10px] italic text-ink-900/50 dark:text-paper/50">Thinking...</div>`;
+    stream.appendChild(typingBubble);
+    stream.scrollTop = stream.scrollHeight;
+
+    try {
+      const aiResult = await queryGeminiAPI(query, systemPromptChat, true);
+      document.getElementById('chat-typing-bubble')?.remove();
+      appendChatMsg(aiResult, 'assistant');
+      const lowerQ = query.toLowerCase();
+      if (lowerQ.includes('expert') || lowerQ.includes('connect') || lowerQ.includes('talk')) {
+        setTimeout(() => document.getElementById('lead-capture-modal').classList.remove('hidden'), 1200);
+      }
+    } catch (err) {
+      document.getElementById('chat-typing-bubble')?.remove();
+      appendChatMsg(err.message, 'assistant');
+    }
+  }
+
+  async function generateAIComplianceStrategyPlan() {
+    const inflow = parseFloat(document.getElementById('calc-inflow').value);
+    const category = document.getElementById('calc-category').value;
+    const gstRate = parseFloat(document.getElementById('calc-gst-percent').value);
+    if (isNaN(inflow) || inflow <= 0) { showDialogToast("Please enter your annual revenue first."); return; }
+
+    const container = document.getElementById('ai-strategy-container');
+    const content = document.getElementById('ai-strategy-content');
+    container.classList.remove('hidden');
+    content.innerHTML = `<div class="flex items-center gap-3"><i class="fa-solid fa-spinner animate-spin text-moss"></i> <span>Generating your tax strategy suggestions...</span></div>`;
+    container.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    const categoryName = category === 'ind' ? 'Individual / Proprietorship' : (category === 'corp' ? 'Corporate Private Limited' : 'LLP Partnership');
+    const customPrompt = `Generate a tax mitigation strategy and compliance roadmap for an Indian business with:
 - Annual Revenue: INR ${inflow.toLocaleString('en-IN')}
-- Corporate Entity: ${categoryName}
-- GST Bracket Category: ${gstRate}%
+- Entity: ${categoryName}
+- GST Bracket: ${gstRate}%
+Provide a step-by-step tax reduction strategy, key documentation targets, and relevant deductions. Use clean markdown with bullet points.`;
+    const customSystemPrompt = `You are the [Your Firm Name] Tax Strategy Assistant. Draft clear, actionable tax mitigation suggestions with statutory timelines and structured deductions based on the business category provided.`;
 
-Provide a step-by-step tax reduction strategy, key documentation compliance targets, tax saving provisions (like deductions, depreciation rules), and structural legal advice. Use clean markdown formatting, bold structures, and bulleted roadmaps. Make the analysis feel highly elite, precise, and custom written.`;
+    try {
+      const result = await queryGeminiAPI(customPrompt, customSystemPrompt, true);
+      content.innerHTML = result;
+    } catch (err) {
+      content.innerHTML = `<span class="text-red-500 font-semibold"><i class="fa-solid fa-circle-exclamation mr-2"></i>${err.message}</span>`;
+    }
+  }
 
-            const customSystemPrompt = `You are the Vinayaga Associates Lead Financial Strategy Compiler, acting with the 15+ years expert authority of Vignesh.
-Your task is to draft comprehensive, premium, actionable tax mitigation blueprints. Include clear statutory timelines, legal compliance codes, and structured tax deductions based on the business category provided. Keep formatting pristine.`;
+  function cancelLeadCapture() { document.getElementById('lead-capture-modal').classList.add('hidden'); }
 
-            try {
-                const responseRoadmap = await queryGeminiAPI(customPrompt, customSystemPrompt, true);
-                strategyContent.innerHTML = responseRoadmap;
-                
-                // Add entry animation
-                gsap.from(strategyContent, { opacity: 0, y: 15, duration: 0.6 });
+  function submitLeadCapture() {
+    const name = document.getElementById('lead-name').value;
+    const email = document.getElementById('lead-email').value;
+    const phone = document.getElementById('lead-phone').value;
+    if (!name || !email || !phone) { showDialogToast("Please fill in all fields to continue."); return; }
+    const WHATSAPP_NUMBER = "[YOUR WHATSAPP NUMBER, e.g. 919876543210]";
+    const waText = encodeURIComponent(`Hi, I'd like to talk to an advisor.\nName: ${name}\nEmail: ${email}\nPhone: ${phone}`);
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`, "_blank");
+    document.getElementById('lead-capture-modal').classList.add('hidden');
+    appendChatMsg("Thanks! We've opened WhatsApp so you can connect with us directly.", "assistant");
+  }
 
-            } catch (err) {
-                strategyContent.innerHTML = `<span class="text-red-500 font-bold"><i class="fa-solid fa-circle-exclamation mr-2"></i> ${err.message}</span>`;
-            }
-        }
+  function showDialogToast(msg) {
+    const el = document.createElement('div');
+    el.className = "fixed top-24 left-1/2 -translate-x-1/2 z-50 px-6 py-4 rounded-xl bg-paper dark:bg-ink-800 border-2 border-brass text-xs shadow-2xl flex items-center gap-3";
+    el.innerHTML = `<i class="fa-solid fa-circle-info text-brass"></i> <span>${msg}</span>`;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 3500);
+  }
 
-        // Handoff lead capture controllers
-        function cancelLeadCapture() {
-            document.getElementById('lead-capture-modal').classList.add('hidden');
-        }
+  function renderDocChecklist(key) {
+    const list = documentChecklists[key] || [];
+    const holder = document.getElementById('checklist-holder');
+    holder.innerHTML = "";
+    list.forEach(item => {
+      const li = document.createElement('li');
+      li.className = "flex items-start gap-2 py-1 border-b rule last:border-0";
+      li.innerHTML = `<i class="fa-regular fa-square-check text-moss mt-1 flex-shrink-0"></i> <span>${item}</span>`;
+      holder.appendChild(li);
+    });
+  }
 
-        function submitLeadCapture() {
-            const name = document.getElementById('lead-name').value;
-            const email = document.getElementById('lead-email').value;
-            const phone = document.getElementById('lead-phone').value;
+  function initThemePreferences() {
+    const saved = localStorage.getItem('theme');
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (saved === 'dark' || (!saved && systemDark)) {
+      document.documentElement.classList.add('dark');
+      document.getElementById('theme-icon').className = 'fa-solid fa-sun text-xs';
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.getElementById('theme-icon').className = 'fa-solid fa-moon text-xs';
+    }
+  }
 
-            if (!name || !email || !phone) {
-                showDialogToast("Please provide all fields to transition.");
-                return;
-            }
+  document.addEventListener('DOMContentLoaded', () => {
+    initThemePreferences();
+    renderDocChecklist('pvt');
 
-            // Inject lead into Admin Rows
-            injectAdminLeadsRows(name, "AI Handoff Lead", email);
+    document.getElementById('theme-switch-btn').addEventListener('click', () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      document.getElementById('theme-icon').className = isDark ? 'fa-solid fa-moon text-xs' : 'fa-solid fa-sun text-xs';
+    });
 
-            // Update converted leads metric
-            const curLeadsCount = parseInt(document.getElementById('metric-leads').innerText);
-            document.getElementById('metric-leads').innerText = curLeadsCount + 1;
+    const toggleBtn = document.getElementById('mobile-toggle-btn');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const toggleIcon = document.getElementById('mobile-toggle-icon');
+    toggleBtn.addEventListener('click', () => {
+      mobileDrawer.classList.toggle('hidden');
+      const isOpen = !mobileDrawer.classList.contains('hidden');
+      toggleIcon.className = isOpen ? "fa-solid fa-xmark text-sm" : "fa-solid fa-bars text-sm";
+    });
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileDrawer.classList.add('hidden');
+        toggleIcon.className = "fa-solid fa-bars text-sm";
+      });
+    });
 
-            document.getElementById('lead-capture-modal').classList.add('hidden');
-            appendChatMsg("Strategic coordinate verified successfully. Direct desk handoff dispatched to Vignesh.", "assistant");
-        }
+    document.getElementById('compute-btn').addEventListener('click', () => {
+      const inflow = parseFloat(document.getElementById('calc-inflow').value);
+      const category = document.getElementById('calc-category').value;
+      const gstRate = parseFloat(document.getElementById('calc-gst-percent').value);
+      if (isNaN(inflow) || inflow <= 0) { showDialogToast("Please enter your annual revenue first."); return; }
 
-        // Auxiliary helper to populate Admin rows
-        function injectAdminLeadsRows(name, service, contact) {
-            const rowsContainer = document.getElementById('admin-leads-rows');
-            const tr = document.createElement('tr');
-            tr.className = "border-b border-black/[0.02] dark:border-white/5 last:border-0 animate-fade-in";
-            tr.innerHTML = `
-                <td class="py-3 font-semibold text-brand-darkText dark:text-white">${name}</td>
-                <td class="py-3">${service}</td>
-                <td class="py-3 font-mono">${contact}</td>
-                <td class="py-3 text-right text-brand-emerald font-extrabold uppercase text-[9px]">New</td>
-            `;
-            rowsContainer.prepend(tr);
-        }
-    </script>
+      let computedTax = 0;
+      if (category === 'ind') {
+        if (inflow > 1500000) computedTax = (inflow - 1500000) * 0.3 + 150000;
+        else if (inflow > 1000000) computedTax = (inflow - 1000000) * 0.2 + 50000;
+        else if (inflow > 500000) computedTax = (inflow - 500000) * 0.1;
+      } else {
+        computedTax = inflow * 0.25;
+      }
+      const computedGst = inflow * (gstRate / 100);
+      document.getElementById('out-direct').innerText = '₹' + Math.round(computedTax).toLocaleString('en-IN');
+      document.getElementById('out-gst').innerText = '₹' + Math.round(computedGst).toLocaleString('en-IN');
+      document.getElementById('metric-out-block').classList.remove('hidden');
+    });
+
+    document.getElementById('ai-strategy-btn').addEventListener('click', generateAIComplianceStrategyPlan);
+    document.getElementById('checklist-category-selector').addEventListener('change', (e) => renderDocChecklist(e.target.value));
+
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const desc = btn.nextElementSibling;
+        const icon = btn.querySelector('i');
+        desc.classList.toggle('hidden');
+        icon.style.transform = desc.classList.contains('hidden') ? "rotate(0deg)" : "rotate(180deg)";
+      });
+    });
+
+    const bookingPortalForm = document.getElementById('booking-portal-form');
+    bookingPortalForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const repName = document.getElementById('book-name').value;
+      const repEmail = document.getElementById('book-email').value;
+      const repPhone = document.getElementById('book-phone').value;
+      const repService = document.getElementById('book-service').value;
+      const repMsg = document.getElementById('book-msg').value;
+      const WHATSAPP_NUMBER = "[YOUR WHATSAPP NUMBER, e.g. 919876543210]";
+      const waText = encodeURIComponent(`New consultation request:\nName: ${repName}\nEmail: ${repEmail}\nPhone: ${repPhone}\nService: ${repService}\nNotes: ${repMsg || "—"}`);
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`, "_blank");
+      document.getElementById('booking-success').classList.remove('hidden');
+      bookingPortalForm.reset();
+      setTimeout(() => document.getElementById('booking-success').classList.add('hidden'), 8000);
+    });
+
+    const triggerOrb = document.getElementById('chat-trigger-orb');
+    const chatWindow = document.getElementById('chat-interface');
+    const notificationBadge = document.getElementById('chat-notification');
+    triggerOrb.addEventListener('click', () => {
+      chatWindow.classList.toggle('hidden');
+      chatWindow.classList.toggle('flex');
+      notificationBadge.classList.add('hidden');
+      const isOpened = !chatWindow.classList.contains('hidden');
+      document.getElementById('orb-icon').className = isOpened ? "fa-solid fa-angle-down text-xl" : "fa-solid fa-comment-dots text-xl";
+    });
+    document.getElementById('chat-minimize-btn').addEventListener('click', () => {
+      chatWindow.classList.add('hidden'); chatWindow.classList.remove('flex');
+      document.getElementById('orb-icon').className = "fa-solid fa-comment-dots text-xl";
+    });
+    document.getElementById('chat-close-btn').addEventListener('click', () => {
+      chatWindow.classList.add('hidden'); chatWindow.classList.remove('flex');
+      document.getElementById('orb-icon').className = "fa-solid fa-comment-dots text-xl";
+    });
+    document.getElementById('send-chat-msg-btn').addEventListener('click', processManualChatInput);
+    document.getElementById('chat-text-input').addEventListener('keypress', (e) => { if (e.key === 'Enter') processManualChatInput(); });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); } });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => io.observe(el));
+  });
+</script>
 </body>
 </html>
